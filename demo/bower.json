@@ -1,0 +1,26 @@
+{
+  "name": "demo - gulp.pug",
+  "description": "Gulp, SASS + Pug Templates",
+  "main": "",
+  "authors": [
+  ],
+  "license": "MIT",
+  "keywords": [
+    "test"
+  ],
+  "homepage": "",
+  "private": true,
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap-sass-no-js": "^3.0.3"
+  },
+  "devDependencies": {
+    "requirejs": "^2.3.3"
+  }
+}
