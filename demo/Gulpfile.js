@@ -70,7 +70,7 @@ gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
 /**
  * Serve and watch the scss/pug files for changes
  */
-gulp.task('default', ['sass', 'templates'], function () {
+gulp.task('default', ['sass', 'js', 'templates'], function () {
 
   browserSync(bsConfig);
   gulp.watch('./app/js/*.js', ['js']);
