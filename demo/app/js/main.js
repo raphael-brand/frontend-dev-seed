@@ -1,6 +1,6 @@
 const log = console.log;
 
 log('Hello Bootstrap');
-require(['test-module'], function(test) {
-  log(test.test());
+require(['animation'], function(console) {
+  log(console.animateText('.animation', 150));
 });

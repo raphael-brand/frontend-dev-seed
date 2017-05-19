@@ -1,3 +1,5 @@
+@import 'animation';
+
 body
   font-family: monospace
   font-size: 20px
@@ -7,20 +9,13 @@ body
   margin-top: 2em
   height: 8.7em
   box-shadow: darkgray 0 2px 2px
+  position: relative
 
-
-  h1
-    text-align: center
-    font-size: 2.3em
-    line-height: 0.8em
-    color: #ff0
-    animation: animateHeading 1s 50ms infinite
-
-    @keyframes animateHeading
-      from, to
-        text-shadow: #000 1px 1px 2px
-        font-size: 1.5em
-      20%, 80%
-        text-shadow: #bbb 1px 1px 2px
-        font-size: 1em
-        line-height: 0.8em
+.heading1
+  position: absolute
+  bottom: 0
+  padding: 10px
+  left: 0
+  font-size: 1em
+  line-height: 0.8em
+  color: #ff0
