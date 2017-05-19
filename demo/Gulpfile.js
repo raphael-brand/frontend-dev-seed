@@ -42,7 +42,7 @@ gulp.task('css-vendor', function () {
  */
 gulp.task('sass', function () {
   return gulp.src([
-    './app/scss/*.scss'])
+    './app/sass/*.sass'])
     .pipe(sass()).on('error', sass.logError)
     .pipe(gulp.dest('./dist/css'))
     .pipe(reload({ stream: true }));
@@ -73,6 +73,6 @@ gulp.task('default', ['sass', 'templates'], function () {
 
   browserSync(bsConfig);
   gulp.watch('./app/js/*.js', ['js']);
-  gulp.watch('./app/scss/*.scss', ['sass']);
+  gulp.watch('./app/sass/*.sass', ['sass']);
   gulp.watch('./app/*.pug', ['pug-watch']);
 });
