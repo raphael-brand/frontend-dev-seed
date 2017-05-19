@@ -1,4 +1,25 @@
+body
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif
+
 .jumbotron
+  background-color: darken(#0ff, 30)
+  margin-top: 2em
+  height: 8.7em
+  box-shadow: darkgray 0 2px 2px
+
+
   h1
+    text-align: center
+    font-size: 2.3em
+    line-height: 0.8em
     color: #ff0
-  
+    animation: animateHeading 1s 50ms infinite
+
+    @keyframes animateHeading
+      from, to
+        text-shadow: #ffa 5px 5px 10px
+        font-size: 1.8em
+      20%, 80%
+        text-shadow: #ffa 3px 3px 5px
+        font-size: 2.3em
+        line-height: 0.8em
