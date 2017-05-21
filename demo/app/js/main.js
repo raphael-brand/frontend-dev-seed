@@ -2,5 +2,6 @@ const log = console.log;
 
 log('Hello Bootstrap');
 require(['animation'], function(console) {
-  log(console.animateText('.animation', 150));
+  console.animateText('.animation', 150);
 });
+
