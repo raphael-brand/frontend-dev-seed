@@ -9,7 +9,7 @@ define('textbuffer', () => {
     }
   };
   window.addEventListener('keyup', function (e) {
-    this.obj.setBufferedText(e.keyCode);
+    this.obj.setBufferedText(String.fromCharCode(e.keyCode));
   });
 
   return function () { return this };
