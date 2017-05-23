@@ -1,30 +1,41 @@
 define('textbuffer', () => {
   var textbuffer = [];
+  var lineIndex = 0;
   this.obj = {
     getBufferedText: function () {
-      return textbuffer;
+      var v = [];
+      for(var i=0;i<textbuffer.length; i++) {
+        v.push(textbuffer[i].join(''));
+      }
+      return v.join('\n');
     },
     setBufferedText: function (k) {
-      textbuffer.push(k);
+      textbuffer[lineIndex] && textbuffer[lineIndex].push(k) || (textbuffer[lineIndex] = [k]);
     },
     emptyBuffer: function() {
       textbuffer = [];
     },
     removeFromBuffer: function() {
-      textbuffer.pop()
+      textbuffer[lineIndex].pop();
     }
 
   };
   window.addEventListener('keyup', function (e) {
+    if(e.key.match(/arrow|Alt|Shift|CapsLock/gi)) return;
     switch(e.key) {
-      case 'Alt':; break;
-      case 'Shift':; break;
-      case 'CapsLock':; break;
       case 'Enter':
-        this.obj.setBufferedText('\n');
-      ;
+        lineIndex++;
+      ; break;
       case 'Backspace':
-        this.obj.removeFromBuffer(); break;
+        if(lineIndex > 0 && textbuffer[lineIndex].length == 0) {
+          lineIndex--;
+          this.obj.removeFromBuffer();
+          break;
+        }
+        else if(textbuffer[lineIndex].length > 0)
+          this.obj.removeFromBuffer();
+
+
       case 'Meta':; break;
       default:
         this.obj.setBufferedText(e.key);
