@@ -12,7 +12,7 @@ require(['textbuffer'], function(TextBuffer) {
   var t = TextBuffer().obj;
 
   window.addEventListener('keyup', () => {
-    console.dir(t.getBufferedText());
+    console.log(t.getBufferedText().join(''));
   });
 
 })

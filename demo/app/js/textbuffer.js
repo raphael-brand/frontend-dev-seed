@@ -6,10 +6,29 @@ define('textbuffer', () => {
     },
     setBufferedText: function (k) {
       textbuffer.push(k);
+    },
+    emptyBuffer: function() {
+      textbuffer = [];
+    },
+    removeFromBuffer: function() {
+      textbuffer.pop()
     }
+
   };
   window.addEventListener('keyup', function (e) {
-    this.obj.setBufferedText(String.fromCharCode(e.keyCode));
+    switch(e.key) {
+      case 'Alt':; break;
+      case 'Shift':; break;
+      case 'CapsLock':; break;
+      case 'Enter':
+        this.obj.setBufferedText('\n');
+      ;
+      case 'Backspace':
+        this.obj.removeFromBuffer(); break;
+      case 'Meta':; break;
+      default:
+        this.obj.setBufferedText(e.key);
+    }
   });
 
   return function () { return this };
