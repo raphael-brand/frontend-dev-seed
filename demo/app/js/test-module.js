@@ -6,4 +6,13 @@ define('test-module', function() {
 
 require(['random'], function(r) {
   console.log(r(1,10));
+});
+
+require(['textbuffer'], function(TextBuffer) {
+  var t = TextBuffer().obj;
+
+  window.addEventListener('keyup', () => {
+    console.dir(t.getBufferedText());
+  });
+
 })
