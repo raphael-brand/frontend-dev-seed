@@ -56,10 +56,8 @@ gulp.task('js-vendor', function () {
 
 gulp.task('js', function () {
   return gulp.src([
-    'app/js/test-module.js',
-    'app/js/bundle.js',
-    'app/js/main.js']
-  )
+    'app/js/main.js'
+    ])
     .pipe(concat('main.js'))
     .pipe(gulp.dest('./dist/js'))
     .pipe(reload({ stream: true }))
