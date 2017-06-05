@@ -1,6 +1,9 @@
 const log = console.log;
-
 log('Hello Bootstrap');
-require(['animation'], function(console) {
-  log(console.animateText('.animation', 150));
+require(['bundle'], function() {
+  log('bundler loaded ...');
+}); // 
+/*window.addEventListener('load', function() {
+  
 });
+*/
