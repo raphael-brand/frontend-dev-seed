@@ -50,14 +50,20 @@ gulp.task('sass', function () {
 
 gulp.task('js-vendor', function () {
   return gulp.src(['bower_components/requirejs/require.js'])
-        .pipe(uglifyjs())
-        .pipe(gulp.dest('./dist/js'))
+    .pipe(uglifyjs())
+    .pipe(gulp.dest('./dist/js'))
+});
+
+gulp.task('json', function () {
+  return gulp.src('app/js/data.json')
+    .pipe(gulp.dest('./dist/js'))
+    .pipe(reload({ stream: true }))
 });
 
 gulp.task('js', function () {
   return gulp.src([
     'app/js/main.js'
-    ])
+  ])
     .pipe(concat('main.js'))
     .pipe(gulp.dest('./dist/js'))
     .pipe(reload({ stream: true }))
