@@ -13,3 +13,15 @@
 ``` bash
     ;-)
 ```
+
+
+#### System Requirements:
+
+- NodeJS / NPM
+- Git
+- Bower and Gulp
+  - run the commands
+     ```bash
+     npm install -g bower
+     npm install gulp
+     ``` 
