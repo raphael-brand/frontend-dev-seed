@@ -77,7 +77,7 @@ gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
 gulp.task('default', ['sass', 'js', 'templates'], function () {
 
   browserSync(bsConfig);
-  gulp.watch('./app/js/*.js', ['js']);
+  gulp.watch('./app/js/react/**/*.jsx', ['js']);
   gulp.watch('./app/sass/*.sass', ['sass']);
   gulp.watch('./app/*.pug', ['pug-watch']);
 });
