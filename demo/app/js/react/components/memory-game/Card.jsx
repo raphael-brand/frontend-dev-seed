@@ -3,27 +3,21 @@ import {render} from 'react-dom';
 
 class Card extends React.Component {
   
-  flipped: boolean;
   constructor(props) {
     super(props);
-    this.flipped = false;
-    this.flipCard = this.flipCard.bind(this);
+    this.state = {"cardFlipped": 'card'}
   }
 
-
-  flipCard(event) {
-    this.flipped = !this.flipped;
-    if(!this.flipped)
-      event.target.classList.add('flipped');
-    else
-      event.target.classList.remove('flipped');
+  flipCard() {
+    var css = (this.state.cardFlipped == 'card' ? 'card flipped' : 'card' )
+    this.setState({"cardFlipped":css});
   }
   
   render() {
     return (
       <div
-        className="card"
-        onClick={this.flipCard}
+        className={this.state.cardFlipped}
+        onClick={this.flipCard.bind(this)}
       >{this.props.name}</div>
     );
   }
