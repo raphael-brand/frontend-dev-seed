@@ -78,6 +78,6 @@ gulp.task('default', ['sass', 'js', 'templates'], function () {
 
   browserSync(bsConfig);
   gulp.watch('./app/js/react/**/*.jsx', ['js']);
-  gulp.watch('./app/sass/*.sass', ['sass']);
+  gulp.watch('./app/sass/**/*.sass', ['sass']);
   gulp.watch('./app/*.pug', ['pug-watch']);
 });
