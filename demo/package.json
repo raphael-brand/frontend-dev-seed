@@ -3,15 +3,15 @@
   "version": "1.0.0",
   "description": "Gulp, SASS + Pug Templates",
   "main": "gulpfile.js",
-  "private": "true",
+  "private": true,
   "scripts": {
     "start": "gulp",
     "vendor": "gulp vendor-scripts",
     "css": "gulp sass",
     "js": "gulp js",
     "html": "gulp templates",
-    "update-all": "npm run css && npm run js && npm run html && echo 'success!'",
-    "clear:dist" :"rm -Rf ./dist/",
+    "update-all": "gulp sass js templates && echo 'success!'",
+    "clear:dist": "rm -Rf ./dist/",
     "clear:packages": "rm -Rf ./bower_components ./node_modules"
   },
   "author": "",
