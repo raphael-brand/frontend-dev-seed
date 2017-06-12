@@ -5,7 +5,7 @@ var BUILD_DIR = path.resolve(__dirname, 'dist/js');
 var APP_DIR = path.resolve(__dirname, 'app/js/react');
 
 var config = {
-  entry: APP_DIR + '/image-caroussel/index.jsx',
+  entry: APP_DIR + '/index.jsx',
   output: {
     path: BUILD_DIR,
     filename: 'bundle.js'
