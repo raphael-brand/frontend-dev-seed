@@ -34,8 +34,7 @@ gulp.task('css-vendor', function () {
     'bower_components/bootstrap-sass-no-js/vendor/assets/stylesheets/bootstrap.scss'
   ])
     .pipe(sass()).on('error', sass.logError)
-    .pipe(gulp.dest('./dist/css'))
-    .pipe(reload({ stream: true }));
+    .pipe(gulp.dest('./dist/css'));
 });
 /**
  * Sass task for live injecting into all browsers
@@ -44,9 +43,10 @@ gulp.task('sass', function () {
   return gulp.src([
     './app/sass/*.sass'])
     .pipe(sass()).on('error', sass.logError)
-    .pipe(gulp.dest('./dist/css'))
-    .pipe(reload({ stream: true }));
+    .pipe(gulp.dest('./dist/css'));
 });
+
+gulp.task('sass-watch', ['sass'], reload);
 
 gulp.task('js-vendor', function () {
   return gulp.src(['bower_components/requirejs/require.js'])
@@ -62,8 +62,9 @@ gulp.task('js', function () {
   )
     .pipe(concat('main.js'))
     .pipe(gulp.dest('./dist/js'))
-    .pipe(reload({ stream: true }))
 });
+
+gulp.task('js-watch', ['js'], reload);
 
 gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
 
@@ -73,7 +74,7 @@ gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
 gulp.task('default', ['sass', 'js', 'templates'], function () {
 
   browserSync(bsConfig);
-  gulp.watch('./app/js/*.js', ['js']);
-  gulp.watch('./app/sass/*.sass', ['sass']);
-  gulp.watch('./app/*.pug', ['pug-watch']);
+  gulp.watch('./app/js/*.js', ['js-watch'], reload);
+  gulp.watch('./app/sass/*.sass', ['sass-watch'], reload);
+  gulp.watch('./app/*.pug', ['pug-watch'], reload);
 });
