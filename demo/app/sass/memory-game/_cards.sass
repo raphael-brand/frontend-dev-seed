@@ -1,13 +1,36 @@
-.card
+* 
+  box-sizing: border-box
+.memory-game
+
+.cardWrapper
+  background-color: lighten(blue, 30%)
+  border: 1px solid #000
+
+.cardWrapper
   --offset: 20px
   width: calc(100% / 4 - calc(var(--offset) / 2))
-  font-size: 30px
-  font-weight: bold
-  cursor: pointer
+  height: 353px
+  float: left
   display: inline
-  background-color: lighten(blue, 30%)
-  padding: 3px var(--offset)
-  user-select: none
+  padding: 0
 
-.flipped
-  color: red
+  .card
+    padding: 3px var(--offset)
+    width: 100%
+    height: inherit
+    font-size: 30px
+    font-weight: bold
+    text-align: center
+    cursor: pointer
+    user-select: none
+    opacity: 0
+    transition: opacity 500ms
+
+    :hover
+      background-color: lighten(blue, 30%)
+      //transition: none
+      //opacity: 1
+
+    &.flipped
+      color: red
+      opacity: 1

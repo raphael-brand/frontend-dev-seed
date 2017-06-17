@@ -19,11 +19,12 @@ class Card extends React.Component {
 
   render() {
     return (
+      <div className="cardWrapper">
       <div
         className={this.state.cardFlipped}
         onClick={this.flipCard.bind(this)}
         style={{backgroundImage:this.state.backgroundImage}}
-      >{this.props.name}</div>
+      >{this.props.name}</div></div>
     );
   }
 }
