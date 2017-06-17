@@ -5,14 +5,14 @@ class Card extends React.Component {
   
   constructor(props) {
     super(props);
-    this.state = {"cardFlipped": 'card', "backgroundImage":'url('+this.props.image+')'}
+    this.state = {"cardFlipped": 'card', "backgroundImage": 'none'}
   }
 
   flipCard() {
     var css = (this.state.cardFlipped == 'card' ? 'card flipped' : 'card' )
     this.setState({"cardFlipped":css});
     if(css == 'card flipped')
-      this.setState({"backgroundImage":'url('+this.props.image+')'});
+      this.setState({"backgroundImage":'url(/img/'+this.props.image+')'});
     else
       this.setState({"backgroundImage":'none'});
   }
