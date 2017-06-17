@@ -24,7 +24,7 @@ class Sets extends React.Component {
   }
   render() {
     var rows = new Array();
-    for(var i=0; i <= this.state.imageList.length; i++) {
+    for(var i=0; i < this.state.imageList.length; i++) {
       rows.push(<Card name={i} image={this.state.imageList[i]} key={i} />);
     }
     return <div> {rows} </div>

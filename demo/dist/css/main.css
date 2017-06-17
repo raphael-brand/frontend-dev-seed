@@ -1,0 +1,18 @@
+.card {
+  --offset: 20px;
+  width: calc(100% / 4 - calc(var(--offset) / 2));
+  font-size: 30px;
+  font-weight: bold;
+  cursor: pointer;
+  display: inline;
+  background-color: #9999ff;
+  padding: 3px var(--offset);
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+
+.flipped {
+  color: red;
+}
