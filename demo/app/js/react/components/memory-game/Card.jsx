@@ -12,7 +12,7 @@ class Card extends React.Component {
     var css = (this.state.cardFlipped == 'card' ? 'card flipped' : 'card' )
     this.setState({"cardFlipped":css});
     if(css == 'card flipped')
-      this.setState({"backgroundImage":'url(/img/'+this.props.image+')'});
+      this.setState({"backgroundImage":'url(/img/'+this.props.image.replace(/\_\d$/gi, '')+'.jpeg)'});
     else
       this.setState({"backgroundImage":'none'});
   }
@@ -24,6 +24,7 @@ class Card extends React.Component {
         className={this.state.cardFlipped}
         onClick={this.flipCard.bind(this)}
         style={{backgroundImage:this.state.backgroundImage}}
+        id={this.props.name}
       >{this.props.name}</div></div>
     );
   }

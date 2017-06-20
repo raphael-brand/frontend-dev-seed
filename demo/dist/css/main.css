@@ -1,18 +1,44 @@
-.card {
+* {
+  -webkit-box-sizing: border-box;
+          box-sizing: border-box;
+}
+
+.cardWrapper {
+  background-color: #9999ff;
+  border: 1px solid #000;
+}
+
+.cardWrapper {
   --offset: 20px;
   width: calc(100% / 4 - calc(var(--offset) / 2));
+  height: 353px;
+  float: left;
+  display: inline;
+  padding: 0;
+}
+
+.cardWrapper .card {
+  padding: 3px var(--offset);
+  width: 100%;
+  height: inherit;
   font-size: 30px;
   font-weight: bold;
+  text-align: center;
   cursor: pointer;
-  display: inline;
-  background-color: #9999ff;
-  padding: 3px var(--offset);
   -webkit-user-select: none;
      -moz-user-select: none;
       -ms-user-select: none;
           user-select: none;
+  opacity: 0;
+  -webkit-transition: opacity 500ms;
+  transition: opacity 500ms;
 }
 
-.flipped {
+.cardWrapper .card :hover {
+  background-color: #9999ff;
+}
+
+.cardWrapper .card.flipped {
   color: red;
+  opacity: 1;
 }
