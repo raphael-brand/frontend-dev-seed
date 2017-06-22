@@ -15,6 +15,7 @@
   float: left;
   display: inline;
   padding: 0;
+  border-radius: 3%;
 }
 
 .cardWrapper .card {
@@ -32,9 +33,11 @@
   opacity: 0;
   -webkit-transition: opacity 500ms;
   transition: opacity 500ms;
+  background-size: 100% auto;
+  border-radius: 3%;
 }
 
-.cardWrapper .card :hover {
+.cardWrapper .card:hover {
   background-color: #9999ff;
 }
 
