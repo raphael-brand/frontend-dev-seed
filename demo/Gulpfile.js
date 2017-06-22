@@ -35,6 +35,11 @@ gulp.task('templates', function () {
  */
 gulp.task('pug-watch', ['templates'], reload);
 
+gulp.task('json', function () {
+  return gulp.src(['./app/js/data.json'])
+    .pipe(gulp.dest('./dist/js'))
+})
+
 gulp.task('css-vendor', function () {
   return gulp.src([
     'bower_components/bootstrap-sass-no-js/vendor/assets/stylesheets/bootstrap.scss'
@@ -48,7 +53,7 @@ gulp.task('css-vendor', function () {
 gulp.task('sass', function () {
   return gulp.src([
     './app/sass/**/*.sass'])
-    .pipe(sass({outputStyle: 'expanded'})).on('error', sass.logError)
+    .pipe(sass({ outputStyle: 'expanded' })).on('error', sass.logError)
     .pipe(prefix(prefixerOptions))
     .pipe(concat('main.css'))
     .pipe(gulp.dest('./dist/css'));
@@ -58,8 +63,8 @@ gulp.task('sass-watch', ['sass'], reload);
 
 gulp.task('js-vendor', function () {
   return gulp.src(['bower_components/requirejs/require.js'])
-        .pipe(uglifyjs())
-        .pipe(gulp.dest('./dist/js'))
+    .pipe(uglifyjs())
+    .pipe(gulp.dest('./dist/js'))
 });
 
 gulp.task('js', function () {
@@ -75,7 +80,7 @@ gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
 /**
  * Serve and watch the scss/pug files for changes
  */
-gulp.task('default', ['sass', 'js', 'templates'], function () {
+gulp.task('default', ['sass', 'js', 'templates', 'json'], function () {
 
   browserSync(bsConfig);
   gulp.watch('./app/js/*.js', ['js-watch'], reload);

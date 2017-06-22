@@ -1,0 +1,15 @@
+.flex-layout {
+  background-color: #cca;
+  display: flex;
+  justify-content: space-between;
+  flex-flow: row wrap;
+  align-items: stretch;
+  height: 100%; }
+  .flex-layout > div {
+    background-color: red; }
+  .flex-layout .heading, .flex-layout .content, .flex-layout .footer {
+    background-color: blue;
+    flex-grow: 1; }
+  .flex-layout .content {
+    flex-grow: 2;
+    background-color: red; }
