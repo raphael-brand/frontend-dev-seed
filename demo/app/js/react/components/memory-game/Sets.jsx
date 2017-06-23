@@ -41,28 +41,14 @@ class Sets extends React.Component {
     return array;
   }
 
-  detectPair(event) {
-    let revealed = document.getElementsByClassName('flipped');
-    console.group(':')
-    for(let card1 of revealed) {
-      let base1 = card1.getAttribute('id').replace(/\_1$/gi, '');
-      for(let card2 of revealed) {
-        if(base1 + '_2' == card2.getAttribute('id')) {
-          console.log(card2.getAttribute('id').replace(/\_\d$/gi, ''))
-          console.log('key: ' + card2.getAttribute('id').replace(/\_\d$/gi, ''));
-        }
-      }
-    }
-    console.groupEnd();
-    return false;
-  }
+  
 
   render() {
     var rows = new Array();
     for(var i=0; i < this.state.imageList.length; i++) {
       rows.push(<Card name={this.state.imageList[i]} image={this.state.imageList[i]} key={this.state.imageList[i]} />);
     }
-    return <div onMouseUp={this.detectPair.bind(this)}> {rows} </div>
+    return <div> {rows} </div>
   }
 }
 

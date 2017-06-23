@@ -83,7 +83,7 @@ gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
 gulp.task('default', ['sass', 'js', 'templates', 'json'], function () {
 
   browserSync(bsConfig);
-  gulp.watch('./app/js/*.js', ['js-watch'], reload);
+  gulp.watch('./app/js/**/*.js*', ['js-watch'], reload);
   gulp.watch('./app/sass/**/*.sass', ['sass-watch'], reload);
   gulp.watch('./app/*.pug', ['pug-watch'], reload);
 });
