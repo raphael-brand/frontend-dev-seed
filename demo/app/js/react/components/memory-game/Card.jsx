@@ -3,6 +3,7 @@ import {render} from 'react-dom';
 
 class Card extends React.Component {
   
+  test: any;
   constructor(props) {
     super(props);
     this.state = {
@@ -20,7 +21,8 @@ class Card extends React.Component {
       this.setState({"backgroundImage":'url(/img/'+this.props.image.replace(/\_\d$/gi, '')+'.jpeg)'});
     else
       this.setState({"backgroundImage":'none'});
-    
+    this.test = this.props.test;
+    this.test()
     this.detectPair(event);
     return true
   }

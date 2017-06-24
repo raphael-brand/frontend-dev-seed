@@ -4,7 +4,7 @@ import {Card} from './Card';
 
 
 class Sets extends React.Component {
-  that:any;
+  test:any;
   constructor() {
     super();
     this.state = {
@@ -41,12 +41,14 @@ class Sets extends React.Component {
     return array;
   }
 
-  
+  test() {
+    console.log('ref called');
+  }
 
   render() {
     var rows = new Array();
     for(var i=0; i < this.state.imageList.length; i++) {
-      rows.push(<Card name={this.state.imageList[i]} image={this.state.imageList[i]} key={this.state.imageList[i]} />);
+      rows.push(<Card test={this.test} name={this.state.imageList[i]} image={this.state.imageList[i]} key={this.state.imageList[i]} />);
     }
     return <div> {rows} </div>
   }
