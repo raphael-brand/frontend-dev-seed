@@ -5,8 +5,10 @@ define('textbuffer', () => {
     getBufferedText: function () {
       var v = [];
       for(var i=0;i<textbuffer.length; i++) {
-        v.push(textbuffer[i].join(''));
+        textbuffer[i] && v.push(textbuffer[i].join(''));
       }
+      if(textbuffer.length == 1)
+        return textbuffer[0].join('');
       return v.join('\n');
     },
     setBufferedText: function (k) {
