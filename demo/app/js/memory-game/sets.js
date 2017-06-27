@@ -12,19 +12,49 @@ define('sets', ['./card'], function(card) {
     }
     return array;
   }
-  let result = [];
+  var first = [], second = [];
+  let solved = [];
+  
+  let isMatch = (id) => {
+    let base = id.replace(/\_\d$/,'');
+    if(/base/.test(JSON.stringify(solved)) == true) {
+      return true;
+    }
+    else if(
+      document.querySelector('*[id="'+base+'_1"]').classList.length == 2
+      || document.querySelector('*[id="'+base+'_2"]').classList.length == 2
+    ) {
+      solved.push(base);
+      console.log(solved);
+      return false
+    }
+    else return false;
+  }
+
+  let onClick =  (e)=> {
+    var e = e.target;
+    if(!isMatch(e.getAttribute('id')))
+      if(!(e.className.indexOf('flipped') > -1))
+        e.classList.add('flipped');
+      else
+        e.classList.remove('flipped');
+    else
+        e.classList.add('solved');
+
+  };
+
   fetch('js/data.json').then(response => response.json())
         .then(r => {
-
+          let result = [];
           for(let item of r) {
-            result.push(item.id);
+            first.push(item.id + '_1');
+            second.push(item.id + '_2');
           }
 
-          let second = result.slice();
-          result = shuffle(second.concat(result));
+          result = shuffle(first.concat(second));
           
           for(let item of result) {
-            var Card = card(item)
+            var Card = card(item, onClick)
             document.querySelector('#memory-game').appendChild(Card);
           }
       }
