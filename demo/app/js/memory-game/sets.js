@@ -40,9 +40,8 @@ define('sets', ['./card'], function (card) {
       clearTimeout(timeout);
     }
     else if (!isMatch(t.getAttribute('id'))) {
-      if (visibleCards >= 2) {
+      if (visibleCards >= 1) {
         timeout = setTimeout(hideNonMatching, 1000);
-
       }
     }
   }
