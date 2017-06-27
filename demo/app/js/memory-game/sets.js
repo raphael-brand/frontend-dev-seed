@@ -1,4 +1,4 @@
-define('sets', ['./card'], function(card) {
+define('sets', ['./card'], function (card) {
 
   // Thanks to Mike Bostock for this great article about the
   // Fisher-Yates shuffle! https://bost.ocks.org/mike/shuffle/
@@ -14,49 +14,54 @@ define('sets', ['./card'], function(card) {
   }
   var first = [], second = [];
   let solved = [];
-  
+
   let isMatch = (id) => {
-    let base = id.replace(/\_\d$/,'');
-    if(/base/.test(JSON.stringify(solved)) == true) {
-      return true;
-    }
-    else if(
-      document.querySelector('*[id="'+base+'_1"]').classList.length == 2
-      || document.querySelector('*[id="'+base+'_2"]').classList.length == 2
-    ) {
-      solved.push(base);
-      console.log(solved);
-      return false
-    }
-    else return false;
+    let base = id.replace(/\_\d$/, '');
+    return new RegExp('("' + base + '")', "gi").test(JSON.stringify(solved)) == true;
   }
 
-  let onClick =  (e)=> {
-    var e = e.target;
-    if(!isMatch(e.getAttribute('id')))
-      if(!(e.className.indexOf('flipped') > -1))
-        e.classList.add('flipped');
-      else
-        e.classList.remove('flipped');
-    else
-        e.classList.add('solved');
+  let diffCards = (id) => {
+    let base = id.replace(/\_\d$/, '');
 
+    if (document.querySelector('*[id="' + base + '_1"]').className.indexOf('flipped') > -1
+    && document.querySelector('*[id="' + base + '_2"]').className.indexOf('flipped') > -1) {
+      document.querySelector('*[id="' + base + '_1"]').classList.add('flipped', 'solved')
+      document.querySelector('*[id="' + base + '_2"]').classList.add('flipped', 'solved')
+      solved.push(base);
+      console.log(solved);
+    }
+  }
+
+  let flipCard = (e, match) => {
+    if(match) return;
+
+    if(e.className.indexOf('flipped') > -1)
+      e.classList.remove('flipped')
+    else
+      e.classList.add('flipped');
+    diffCards(e.getAttribute('id'))
+  }
+
+  let onClick = (e) => {
+    var e = e.target;
+    var match = isMatch(e.getAttribute('id'));
+    flipCard(e, match);
   };
 
   fetch('js/data.json').then(response => response.json())
-        .then(r => {
-          let result = [];
-          for(let item of r) {
-            first.push(item.id + '_1');
-            second.push(item.id + '_2');
-          }
-
-          result = shuffle(first.concat(second));
-          
-          for(let item of result) {
-            var Card = card(item, onClick)
-            document.querySelector('#memory-game').appendChild(Card);
-          }
+    .then(r => {
+      let result = [];
+      for (let item of r) {
+        first.push(item.id + '_1');
+        second.push(item.id + '_2');
       }
-  );
+
+      result = shuffle(first.concat(second));
+
+      for (let item of result) {
+        var Card = card(item, onClick)
+        document.querySelector('#memory-game').appendChild(Card);
+      }
+    }
+    );
 });
