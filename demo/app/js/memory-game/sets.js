@@ -12,40 +12,71 @@ define('sets', ['./card'], function (card) {
     }
     return array;
   }
-  var first = [], second = [];
+  var first = [], second = [], timeout = null;
   let solved = [];
+  let visibleCards = 0;
 
   let isMatch = (id) => {
+    let base = id.replace(/\_\d$/, '');
+    return document.querySelector('*[id="' + base + '_1"]').className.indexOf('flipped') > -1 && document.querySelector('*[id="' + base + '_2"]').className.indexOf('flipped') > -1
+  }
+
+  let isSolved = (id) => {
     let base = id.replace(/\_\d$/, '');
     return new RegExp('("' + base + '")', "gi").test(JSON.stringify(solved)) == true;
   }
 
-  let diffCards = (id) => {
+  let diffCards = (t) => {
+    let id = t.getAttribute('id')
     let base = id.replace(/\_\d$/, '');
 
     if (document.querySelector('*[id="' + base + '_1"]').className.indexOf('flipped') > -1
-    && document.querySelector('*[id="' + base + '_2"]').className.indexOf('flipped') > -1) {
-      document.querySelector('*[id="' + base + '_1"]').classList.add('flipped', 'solved')
-      document.querySelector('*[id="' + base + '_2"]').classList.add('flipped', 'solved')
+      && document.querySelector('*[id="' + base + '_2"]').className.indexOf('flipped') > -1) {
       solved.push(base);
       console.log(solved);
+      document.querySelector('*[id="' + base + '_1"]').classList.add('flipped', 'solved')
+      document.querySelector('*[id="' + base + '_2"]').classList.add('flipped', 'solved')
+      visibleCards = 0;
+      clearTimeout(timeout);
+    }
+    else if (!isMatch(t.getAttribute('id'))) {
+      if (visibleCards >= 2) {
+        timeout = setTimeout(hideNonMatching, 1000);
+
+      }
     }
   }
 
-  let flipCard = (e, match) => {
-    if(match) return;
+  let hideNonMatching = () => {
+    for (let card of Array.from(document.querySelectorAll('.flipped'))) {
+      if (isSolved(card.getAttribute('id')))
+        continue;
+      else
+        card.classList.remove('flipped');
+    }
+    visibleCards = 0;
+  }
 
-    if(e.className.indexOf('flipped') > -1)
+  let flipCard = (e, solved) => {
+    if (solved) return;
+
+    if (e.className.indexOf('flipped') > -1) {
       e.classList.remove('flipped')
-    else
+      if (visibleCards > 0)
+        visibleCards--;
+    }
+    else {
       e.classList.add('flipped');
-    diffCards(e.getAttribute('id'))
+      visibleCards++;
+    }
+
+    diffCards(e)
   }
 
   let onClick = (e) => {
     var e = e.target;
-    var match = isMatch(e.getAttribute('id'));
-    flipCard(e, match);
+    var solved = isSolved(e.getAttribute('id'));
+    flipCard(e, solved);
   };
 
   fetch('js/data.json').then(response => response.json())
