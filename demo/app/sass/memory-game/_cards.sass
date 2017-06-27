@@ -9,6 +9,8 @@
 .cardWrapper
   --offset: 20px
   width: calc(100% / 4 - calc(var(--offset) / 2))
+  min-width: 200px
+  max-width: 200px
   height: 353px
   float: left
   display: inline
@@ -26,7 +28,8 @@
     user-select: none
     opacity: 0
     transition: opacity 500ms
-    background-size: 100% auto
+    background-size: 100% 100%
+    background-repeat: no-repeat
     border-radius: 3%
 
     &:hover
