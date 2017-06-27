@@ -8,11 +8,14 @@ require(['random'], function(r) {
   console.log(r(1,10));
 });
 
-require(['textbuffer'], function(TextBuffer) {
+require(['textbuffer', 'animation'], function(TextBuffer, cons) {
   var t = TextBuffer().obj;
-
+  
   window.addEventListener('keyup', () => {
     console.log(t.getBufferedText());
+    document.querySelector('.animation').innerHTML = ''
+    document.querySelector('.animation').innerText = t.getBufferedText();
+    cons.animateText('.animation', 150);
   });
 
 })
