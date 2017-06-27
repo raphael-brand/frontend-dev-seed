@@ -1,3 +1,3 @@
 define('memory-game', ['./sets'], function() {
-  console.log('Memem')
+  console.log('A Memory game!')
 });
