@@ -78,20 +78,32 @@ define('sets', ['./card'], function (card) {
     flipCard(e, solved);
   };
 
-  fetch('js/data.json').then(response => response.json())
-    .then(r => {
-      let result = [];
-      for (let item of r) {
-        first.push(item.id + '_1');
-        second.push(item.id + '_2');
-      }
-
-      result = shuffle(first.concat(second));
-
-      for (let item of result) {
-        var Card = card(item, onClick)
-        document.querySelector('#memory-game').appendChild(Card);
-      }
+  let result = [];
+  let onCardsReady = () => {
+    document.querySelector('#memory-game').innerHTML = '';
+    for (let item of result) {
+      var Card = card(item, onClick)
+      document.querySelector('#memory-game').appendChild(Card);
     }
-    );
+  }
+  
+  let initializeGame = () => {
+    if(first.length)
+      result = shuffle(first.concat(second)) && onCardsReady();
+    else
+    fetch('js/data.json').then(response => response.json())
+      .then(r => {
+        result = [];
+        for (let item of r) {
+          first.push(item.id + '_1');
+          second.push(item.id + '_2');
+        }
+
+        result = shuffle(first.concat(second));
+
+        onCardsReady();
+      }
+      );
+  }
+  return {init:initializeGame}
 });
