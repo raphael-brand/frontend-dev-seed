@@ -26,12 +26,15 @@
     cursor: pointer;
     user-select: none;
     opacity: 0;
-    transition: opacity 500ms;
     background-size: 100% 100%;
     background-repeat: no-repeat;
-    border-radius: 3%; }
+    border-radius: 3%;
+    transform: rotateY(180deg);
+    transition: transform 500ms, opacity 200ms;
+    backface-visibility: shown; }
     .cardWrapper .card:hover {
       background-color: #9999ff; }
     .cardWrapper .card.flipped {
+      transform: rotateY(0deg);
       color: red;
       opacity: 1; }
