@@ -37,13 +37,14 @@ define('sets', ['./card'], function (card) {
       document.querySelector('*[id="' + base + '_1"]').classList.add('flipped', 'solved')
       document.querySelector('*[id="' + base + '_2"]').classList.add('flipped', 'solved')
       visibleCards = 0;
-      clearTimeout(timeout);
+      //clearTimeout(timeout);
     }
-    else if (!isMatch(t.getAttribute('id'))) {
-      if (visibleCards >= 1) {
-        timeout = setTimeout(hideNonMatching, 1000);
+    //else if (!isMatch(t.getAttribute('id'))) {
+      if (visibleCards > 2) {
+        hideNonMatching()
+        //timeout = setTimeout(hideNonMatching, 2000);
       }
-    }
+    //}
   }
 
   let hideNonMatching = () => {
@@ -80,6 +81,7 @@ define('sets', ['./card'], function (card) {
 
   let result = [];
   let onCardsReady = () => {
+    solved = [];
     document.querySelector('#memory-game').innerHTML = '';
     for (let item of result) {
       var Card = card(item, onClick)
@@ -89,7 +91,7 @@ define('sets', ['./card'], function (card) {
   
   let initializeGame = () => {
     if(first.length)
-      result = shuffle(first.concat(second)) && onCardsReady();
+      (result = shuffle(first.concat(second))) && onCardsReady();
     else
     fetch('js/data.json').then(response => response.json())
       .then(r => {
