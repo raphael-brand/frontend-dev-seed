@@ -36,25 +36,25 @@ define('sets', ['./card'], function (card) {
       console.log(solved);
       document.querySelector('*[id="' + base + '_1"]').classList.add('flipped', 'solved')
       document.querySelector('*[id="' + base + '_2"]').classList.add('flipped', 'solved')
-      visibleCards = 0;
+      visibleCards -= 2;
       //clearTimeout(timeout);
     }
     //else if (!isMatch(t.getAttribute('id'))) {
-      if (visibleCards > 2) {
-        hideNonMatching()
+      if (visibleCards >= 3) {
+        hideNonMatching(id)
         //timeout = setTimeout(hideNonMatching, 2000);
       }
     //}
   }
 
-  let hideNonMatching = () => {
+  let hideNonMatching = (id) => {
     for (let card of Array.from(document.querySelectorAll('.flipped'))) {
       if (isSolved(card.getAttribute('id')))
         continue;
-      else
+      else if(card.getAttribute('id') != id && visibleCards > 2) {
         card.classList.remove('flipped');
+      }
     }
-    visibleCards = 0;
   }
 
   let flipCard = (e, solved) => {
