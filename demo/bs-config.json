@@ -1,4 +1,4 @@
 {
-  "browser": ["google chrome"],
+  "browser": ["google chrome", "chrome"],
   "server": "./dist"
 }
