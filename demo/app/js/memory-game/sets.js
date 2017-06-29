@@ -1,27 +1,3 @@
-"use strict";
-define('card', function() {
-  return function(id, onClick) {
-      var Card = `<div class="cardWrapper">
-      <div class="card" id="${id}"></div>
-      </div>`;
-      var wrapper = document.createElement('div');
-      wrapper.innerHTML = Card;
-      var Card = wrapper.querySelector('.card');
-      Card.style.backgroundImage = 'url(../img/' + id.replace(/\_\d$/,'') + '.jpeg)';
-      Card.addEventListener('click', onClick);
-      return wrapper;
-    }
-});
-
-define('memory-game', ['./sets'], function(sets) {
-  console.log('A Memory game!');
-  let button = document.querySelector('button');
-  button.addEventListener('click', () => {
-    sets.init();
-  });
-  button.click();
-
-});
 define('sets', ['./card'], function (card) {
 
   // Thanks to Mike Bostock for this great article about the
@@ -132,16 +108,4 @@ define('sets', ['./card'], function (card) {
       );
   }
   return {init:initializeGame}
-});
-
-define('test-module', function() {
-  return {
-    test: () => {return 'this is a test'}
-  }
-});
-const log = console.log;
-
-log('Hello Bootstrap');
-require(['test-module','memory-game'], function(test) {
-  log(test.test());
 });

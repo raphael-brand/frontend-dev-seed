@@ -42,7 +42,7 @@ gulp.task('css-vendor', function () {
  */
 gulp.task('sass', function () {
   return gulp.src([
-    './app/sass/*.sass'])
+    './app/sass/**/*.sass'])
     .pipe(sass()).on('error', sass.logError)
     .pipe(gulp.dest('./dist/css'))
     .pipe(reload({ stream: true }));
@@ -56,9 +56,9 @@ gulp.task('js-vendor', function () {
 
 gulp.task('js', function () {
   return gulp.src([
+    'app/js/memory-game/*.js',
     'app/js/test-module.js',
     'app/js/random.js',
-    'app/js/animation.js',
     'app/js/main.js']
   )
     .pipe(concat('main.js'))
@@ -74,7 +74,7 @@ gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
 gulp.task('default', ['sass', 'js', 'templates'], function () {
 
   browserSync(bsConfig);
-  gulp.watch('./app/js/*.js', ['js'], reload);
-  gulp.watch('./app/sass/*.sass', ['sass'], reload);
+  gulp.watch('./app/js/**/*.js', ['js'], reload);
+  gulp.watch('./app/sass/**/*.sass', ['sass'], reload);
   gulp.watch('./app/*.pug', ['pug-watch'], reload);
 });
