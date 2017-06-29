@@ -13,7 +13,7 @@ define('card', function() {
 });
 
 define('memory-game', ['./sets'], function() {
-  console.log('Memem')
+  console.log('A Memory game!')
 });
 define('sets', ['./card'], function (card) {
 
@@ -57,9 +57,8 @@ define('sets', ['./card'], function (card) {
       clearTimeout(timeout);
     }
     else if (!isMatch(t.getAttribute('id'))) {
-      if (visibleCards >= 2) {
+      if (visibleCards >= 1) {
         timeout = setTimeout(hideNonMatching, 1000);
-
       }
     }
   }
