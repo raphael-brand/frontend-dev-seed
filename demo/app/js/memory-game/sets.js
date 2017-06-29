@@ -40,21 +40,21 @@ define('sets', ['./card'], function (card) {
       //clearTimeout(timeout);
     }
     //else if (!isMatch(t.getAttribute('id'))) {
-      if (visibleCards > 2) {
-        hideNonMatching()
+      if (visibleCards >= 3) {
+        hideNonMatching(id)
         //timeout = setTimeout(hideNonMatching, 2000);
       }
     //}
   }
 
-  let hideNonMatching = () => {
+  let hideNonMatching = (id) => {
     for (let card of Array.from(document.querySelectorAll('.flipped'))) {
       if (isSolved(card.getAttribute('id')))
         continue;
-      else
+      else if(card.getAttribute('id') != id && visibleCards > 2) {
         card.classList.remove('flipped');
+      }
     }
-    visibleCards = 0;
   }
 
   let flipCard = (e, solved) => {
