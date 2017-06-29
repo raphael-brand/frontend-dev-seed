@@ -1,3 +1,4 @@
+"use strict";
 define('card', function() {
   return function(id, onClick) {
       var Card = `<div class="cardWrapper">
