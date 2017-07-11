@@ -12,11 +12,17 @@
     "html": "gulp templates",
     "update-all": "npm run css && npm run js && npm run html && echo 'success!'",
     "clear:dist" :"rm -Rf ./dist/",
-    "clear:packages": "rm -Rf ./bower_components ./node_modules"
+    "clear:packages": "rm -Rf ./bower_components ./node_modules",
+    "css-msg": "echo 'CSS modified'",
+    "watch-packages": "nodemon -w bower.json -x \"npm run wiredep.render\"",
+    "watch-css": "nodemon -w dist/css/main.css -x \"npm run css-msg\"",
+    "wiredep": "npm run watch-packages",
+    "wiredep.render": "gulp templates; wiredep --src dist/index.html"
   },
   "author": "",
   "license": "ISC",
   "devDependencies": {
+    "wiredep": "^4.0.0",
     "browser-sync": "^2.17.5",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",

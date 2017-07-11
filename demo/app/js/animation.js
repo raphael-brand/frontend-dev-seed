@@ -12,6 +12,7 @@ define('animation', function(test) {
       div.innerHTML = chars[c];
       target.appendChild(div)
       setTimeout((id) => {
+        Array.from(document.querySelectorAll('.animated'))[id] && 
        Array.from(document.querySelectorAll('.animated'))[id].classList.add('animating');
       }
       , i, c);

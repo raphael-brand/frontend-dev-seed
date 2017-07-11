@@ -15,9 +15,3 @@
 ``` bash
     ;-)
 ```
-
-
-#### System Requirements:
-
-- NodeJS / NPM
-- Git
