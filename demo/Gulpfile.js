@@ -57,6 +57,8 @@ gulp.task('js-vendor', function () {
 gulp.task('js', function () {
   return gulp.src([
     'app/js/test-module.js',
+    'app/js/textbuffer.js',
+    'app/js/random.js',
     'app/js/animation.js',
     'app/js/main.js']
   )
@@ -73,7 +75,7 @@ gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
 gulp.task('default', ['sass', 'js', 'templates'], function () {
 
   browserSync(bsConfig);
-  gulp.watch('./app/js/*.js', ['js']);
-  gulp.watch('./app/sass/*.sass', ['sass']);
-  gulp.watch('./app/*.pug', ['pug-watch']);
+  gulp.watch('./app/js/*.js', ['js'], reload);
+  gulp.watch('./app/sass/*.sass', ['sass'], reload);
+  gulp.watch('./app/*.pug', ['pug-watch'], reload);
 });
