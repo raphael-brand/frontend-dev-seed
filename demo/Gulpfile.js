@@ -58,7 +58,7 @@ gulp.task('js-vendor', function () {
 gulp.task('js', function () {
   return gulp.src([
     'app/js/test-module.js',
-    'app/js/animation.js',
+    'app/js/acceleration.js',
     'app/js/main.js']
   )
     .pipe(concat('main.js'))
