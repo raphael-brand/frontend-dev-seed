@@ -6,23 +6,25 @@
   "private": true,
   "scripts": {
     "start": "npm run check-vendor && gulp",
-    "check-vendor": "test -d bower_components || (bower install && npm run vendor) || (echo 'Bower not installed. Please run \"npm install -g bower\"' && exit 1)",
+    "check-vendor": "test -d node_modules || (npm install) || (echo 'npm not installed. Please run \"npm install -g npm\"' && exit 1)",
     "vendor": "gulp vendor-scripts",
     "css": "gulp sass",
     "js": "gulp js",
     "html": "gulp templates",
-    "update-all": "bower install && gulp sass js templates && echo 'success!'",
+    "update-all": "npm install && gulp sass js templates && echo 'success!'",
     "clear:dist": "rm -Rf ./dist/",
-    "clear:packages": "rm -Rf ./bower_components ./node_modules"
+    "clear:packages": "rm -Rf ./node_modules"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Raphael Brand<info@raphaelbrand.de>",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.17.5",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-pug": "^3.1.0",
     "gulp-sass": "^2.3.2",
-    "gulp-uglify": "^3.0.0"
+    "gulp-uglify": "^3.0.0",
+    "requirejs": "^2.3.3",
+    "bootstrap-sass": "^3.3.7"
   }
 }

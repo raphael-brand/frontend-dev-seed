@@ -31,7 +31,7 @@ gulp.task('pug-watch', ['templates'], reload);
 
 gulp.task('css-vendor', function () {
   return gulp.src([
-    'bower_components/bootstrap-sass-no-js/vendor/assets/stylesheets/bootstrap.scss'
+    'node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss'
   ])
     .pipe(sass()).on('error', sass.logError)
     .pipe(gulp.dest('./dist/css'))
@@ -49,7 +49,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js-vendor', function () {
-  return gulp.src(['bower_components/requirejs/require.js'])
+  return gulp.src(['node_modules/requirejs/require.js'])
         .pipe(uglifyjs())
         .pipe(gulp.dest('./dist/js'))
 });
