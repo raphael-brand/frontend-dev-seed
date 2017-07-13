@@ -4,7 +4,7 @@ var reload = browserSync.reload;
 var bsConfig = require('./bs-config.json');
 var sass = require('gulp-sass');
 var pug = require('gulp-pug');
-var uglifyjs = require('gulp-uglifyjs');
+var uglifyjs = require('gulp-uglify');
 var concat = require('gulp-concat');
 
 /**
@@ -30,8 +30,9 @@ gulp.task('templates', function () {
 gulp.task('pug-watch', ['templates'], reload);
 
 gulp.task('css-vendor', function () {
+  console.log('bootstrap not used ...');
   return gulp.src([
-    'bower_components/bootstrap-sass-no-js/vendor/assets/stylesheets/bootstrap.scss'
+    'node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss'
   ])
     .pipe(sass()).on('error', sass.logError)
     .pipe(gulp.dest('./dist/css'))
@@ -49,7 +50,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js-vendor', function () {
-  return gulp.src(['bower_components/requirejs/require.js'])
+  return gulp.src(['node_modules/requirejs/require.js'])
         .pipe(uglifyjs())
         .pipe(gulp.dest('./dist/js'))
 });
@@ -65,7 +66,7 @@ gulp.task('js', function () {
     .pipe(reload({ stream: true }))
 });
 
-gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
+gulp.task('vendor-scripts', ['js-vendor']);
 
 /**
  * Serve and watch the scss/pug files for changes

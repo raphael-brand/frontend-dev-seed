@@ -2,26 +2,29 @@
   "name": "gulp.pug",
   "version": "1.0.0",
   "description": "Gulp, SASS + Pug Templates",
-  "main": "gulpfile.js",
-  "private": "true",
+  "main": "Gulpfile.js",
+  "private": true,
   "scripts": {
-    "start": "gulp",
+    "start": "npm run check-vendor && gulp",
+    "check-vendor": "test -d node_modules || (npm install) || (echo 'npm not installed. Please run \"npm install -g npm\"' && exit 1)",
     "vendor": "gulp vendor-scripts",
     "css": "gulp sass",
     "js": "gulp js",
     "html": "gulp templates",
-    "update-all": "npm run css && npm run js && npm run html && echo 'success!'",
-    "clear:dist" :"rm -Rf ./dist/",
-    "clear:packages": "rm -Rf ./bower_components ./node_modules"
+    "update-all": "npm install && gulp sass js templates && echo 'success!'",
+    "clear:dist": "rm -Rf ./dist/",
+    "clear:packages": "rm -Rf ./node_modules"
   },
-  "author": "",
-  "license": "ISC",
+  "author": "Raphael Brand<info@raphaelbrand.de>",
+  "license": "MIT",
   "devDependencies": {
     "browser-sync": "^2.17.5",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-pug": "^3.1.0",
     "gulp-sass": "^2.3.2",
-    "gulp-uglifyjs": "^0.6.2"
+    "gulp-uglify": "^3.0.0",
+    "requirejs": "^2.3.3",
+    "bootstrap-sass": "^3.3.7"
   }
 }

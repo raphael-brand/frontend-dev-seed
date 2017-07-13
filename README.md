@@ -5,9 +5,7 @@
 ``` bash
   git clone https://github.com/raphael-brand/frontend-dev-seed.git your-directory-name
   cd your-directory-name/demo
-  npm install && bower install
-  npm run vendor #renders bootstrap-css and requirejs to dist
-  gulp
+  npm start #start the app
 ```
 ### start coding
 ``` bash
@@ -17,11 +15,6 @@
 
 #### System Requirements:
 
-- NodeJS / NPM
-- Git
-- Bower and Gulp
-  - run the commands
-     ```bash
-     npm install -g bower
-     npm install gulp
-     ``` 
+- [NodeJS / NPM](https://nodejs.org) 
+- [Gulp Task Runner](https://gulpjs.com) - install with `npm install -g gulp-cli`
+
