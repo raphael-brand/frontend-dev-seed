@@ -2,16 +2,17 @@
   "name": "gulp.pug",
   "version": "1.0.0",
   "description": "Gulp, SASS + Pug Templates",
-  "main": "gulpfile.js",
-  "private": "true",
+  "main": "Gulpfile.js",
+  "private": true,
   "scripts": {
-    "start": "gulp",
+    "start": "npm run check-vendor && gulp",
+    "check-vendor": "test -d bower_components || (bower install && npm run vendor) || (echo 'Bower not installed. Please run \"npm install -g bower\"' && exit 1)",
     "vendor": "gulp vendor-scripts",
     "css": "gulp sass",
     "js": "gulp js",
     "html": "gulp templates",
-    "update-all": "npm run css && npm run js && npm run html && echo 'success!'",
-    "clear:dist" :"rm -Rf ./dist/",
+    "update-all": "bower install && gulp sass js templates && echo 'success!'",
+    "clear:dist": "rm -Rf ./dist/",
     "clear:packages": "rm -Rf ./bower_components ./node_modules"
   },
   "author": "",
@@ -22,6 +23,6 @@
     "gulp-concat": "^2.6.1",
     "gulp-pug": "^3.1.0",
     "gulp-sass": "^2.3.2",
-    "gulp-uglifyjs": "^0.6.2"
+    "gulp-uglify": "^3.0.0"
   }
 }
