@@ -1,7 +1,6 @@
 .gitignore
 demo/node_modules
-demo/bower_components
-demo/dist/
 !demo
+demo/dist/*
 node_modules/
-Gulpfile.js
+*.log
