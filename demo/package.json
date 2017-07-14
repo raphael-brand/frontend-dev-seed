@@ -17,14 +17,18 @@
   },
   "author": "Raphael Brand<info@raphaelbrand.de>",
   "license": "MIT",
-  "devDependencies": {
+  "devDependencies": { 
     "browser-sync": "^2.17.5",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
     "gulp-pug": "^3.1.0",
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^3.0.0",
+    "nodemon": "^1.11.0"
+  },
+  "dependencies": {
     "requirejs": "^2.3.3",
-    "bootstrap-sass": "^3.3.7"
+    "bootstrap-sass": "^3.3.7",
+    "three": "^0.86.0"
   }
 }
