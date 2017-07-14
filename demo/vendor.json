@@ -1,0 +1,14 @@
+{
+  "js": {
+    "src": [
+      "node_modules/requirejs/require.js",
+      "node_modules/three/build/three.min.js"
+  ],
+    "dest": "./dist/js/vendor"
+  },
+  "css": {
+    "src": [
+  ],
+    "dest": "./dist/css/vendor"
+  }
+}

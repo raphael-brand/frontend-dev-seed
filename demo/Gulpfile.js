@@ -5,6 +5,7 @@ var bsConfig = require('./bs-config.json');
 var sass = require('gulp-sass');
 var pug = require('gulp-pug');
 var uglifyjs = require('gulp-uglify');
+var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 
 /**
@@ -50,9 +51,16 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js-vendor', function () {
-  return gulp.src(['node_modules/requirejs/require.js'])
-        .pipe(uglifyjs())
-        .pipe(gulp.dest('./dist/js'))
+
+  var vendorConfig = require('./vendor.json');
+  if (!vendorConfig ||
+    (typeof vendorConfig.js.src == 'string' || vendorConfig.js.src.length === 0)) {
+    throw new Error('no vendor scripts added. \nvendor.json:\nuse src["file.a.js"]')
+  }
+  return gulp.src(vendorConfig.js.src)
+      .pipe(uglifyjs({ output: { comments: /^!|@preserve|@license|@cc_on/i } }))
+      .pipe(rename({ suffix: '.min' }))
+      .pipe(gulp.dest(vendorConfig.js.dest))
 });
 
 gulp.task('js', function () {
@@ -66,7 +74,7 @@ gulp.task('js', function () {
     .pipe(reload({ stream: true }))
 });
 
-gulp.task('vendor-scripts', ['js-vendor']);
+gulp.task('vendor-scripts', ['templates', 'js-vendor'], reload);
 
 /**
  * Serve and watch the scss/pug files for changes
@@ -78,3 +86,31 @@ gulp.task('default', ['sass', 'js', 'templates'], function () {
   gulp.watch('./app/sass/*.sass', ['sass']);
   gulp.watch('./app/*.pug', ['pug-watch']);
 });
+
+
+/*
+gulp.task('uglify-vendor', function () {
+
+  console.dir(arguments);
+  return;
+  let optionFiles;
+
+  optionFiles = process.argv.filter((option, index, arr) => {
+    if (/\-\-file/gi.test(arr[index - 1])) {
+      //optionFile = index+1;
+      return arr[index];
+    }
+    return false;
+  });
+  if (optionFiles.length) {
+    optionFiles.map((src) => {
+      console.log(src);
+      return gulp.src(src) // could do this cli-wise with process.argv
+        .pipe(uglifyjs({ output: { comments: /^!|@preserve|@license|@cc_on/i } }))
+        .pipe(rename(src.replace(/.+\/(\w+)\.js$/gi, '$1.min.js')))
+        .pipe(gulp.dest('./dist/js/vendor', { overwrite: true }));
+    });
+  }
+
+});
+*/
