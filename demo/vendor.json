@@ -1,0 +1,12 @@
+{
+  "js": {
+    "src": [
+  ],
+    "dest": "dist/js/vendor"
+  },
+  "css": {
+    "src": [
+  ],
+    "dest": "dist/css/vendor"
+  }
+}

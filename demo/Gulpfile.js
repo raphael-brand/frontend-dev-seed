@@ -5,6 +5,7 @@ var bsConfig = require('./bs-config.json');
 var sass = require('gulp-sass');
 var pug = require('gulp-pug');
 var uglifyjs = require('gulp-uglify');
+var rename = require('gulp-rename');
 var concat = require('gulp-concat');
 
 /**
@@ -50,9 +51,22 @@ gulp.task('sass', function () {
 });
 
 gulp.task('js-vendor', function () {
-  return gulp.src(['node_modules/requirejs/require.js'])
-        .pipe(uglifyjs())
-        .pipe(gulp.dest('./dist/js'))
+
+  var vendorConfig = require('./vendor.json');
+  if (!vendorConfig ||
+    (typeof vendorConfig.js.src == 'string' || vendorConfig.js.src.length === 0)) {
+    throw new Error('no vendor scripts added. \nvendor.json:\nuse src["file.a.js"]')
+  }
+  vendorConfig.js.src.map((value) => {
+    console.log('Building', value, '...');
+    let suffix = ''
+    suffix = (!/\.min/.test(value) ? '.min' : '');
+    
+    gulp.src(value)
+      .pipe(uglifyjs({ output: { comments: /^!|@preserve|@?license|@cc_on/i } }))
+      .pipe(rename({ "suffix": suffix }))
+      .pipe(gulp.dest(vendorConfig.js.dest))
+  });
 });
 
 gulp.task('js', function () {
@@ -66,7 +80,7 @@ gulp.task('js', function () {
     .pipe(reload({ stream: true }))
 });
 
-gulp.task('vendor-scripts', ['js-vendor']);
+gulp.task('vendor-scripts', ['templates', 'js-vendor'], reload);
 
 /**
  * Serve and watch the scss/pug files for changes
