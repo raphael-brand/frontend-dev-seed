@@ -16,5 +16,5 @@
 #### System Requirements:
 
 - [NodeJS / NPM](https://nodejs.org) 
-- [Gulp Task Runner](https://gulpjs.com) - install with `npm install -g gulp-cli`
+- [Gulp Task Runner](http://gulpjs.com) - install with `npm install -g gulp-cli`
 
