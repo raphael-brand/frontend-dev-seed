@@ -93,7 +93,7 @@ define('sets', ['./card'], function (card) {
     if(first.length)
       (result = shuffle(first.concat(second))) && onCardsReady();
     else
-    fetch('js/data.json').then(response => response.json())
+    fetch('/frontend-dev-seed/demo/dist/js/data.json').then(response => response.json())
       .then(r => {
         result = [];
         for (let item of r) {

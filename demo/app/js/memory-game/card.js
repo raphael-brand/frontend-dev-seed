@@ -7,7 +7,7 @@ define('card', function() {
       var wrapper = document.createElement('div');
       wrapper.innerHTML = Card;
       var Card = wrapper.querySelector('.card');
-      Card.style.backgroundImage = 'url(../img/' + id.replace(/\_\d$/,'') + '.jpeg)';
+      Card.style.backgroundImage = 'url(/frontend-dev-seed/demo/dist/img/' + id.replace(/\_\d$/,'') + '.jpeg)';
       Card.addEventListener('click', onClick);
       return wrapper;
     }

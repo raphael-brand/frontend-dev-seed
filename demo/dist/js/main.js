@@ -7,7 +7,7 @@ define('card', function() {
       var wrapper = document.createElement('div');
       wrapper.innerHTML = Card;
       var Card = wrapper.querySelector('.card');
-      Card.style.backgroundImage = 'url(../img/' + id.replace(/\_\d$/,'') + '.jpeg)';
+      Card.style.backgroundImage = 'url(/frontend-dev-seed/demo/dist/img/' + id.replace(/\_\d$/,'') + '.jpeg)';
       Card.addEventListener('click', onClick);
       return wrapper;
     }
@@ -117,7 +117,7 @@ define('sets', ['./card'], function (card) {
     if(first.length)
       (result = shuffle(first.concat(second))) && onCardsReady();
     else
-    fetch('js/data.json').then(response => response.json())
+    fetch('/frontend-dev-seed/demo/dist/js/data.json').then(response => response.json())
       .then(r => {
         result = [];
         for (let item of r) {
@@ -139,9 +139,19 @@ define('test-module', function() {
     test: () => {return 'this is a test'}
   }
 });
+
+require(['random'], function(r) {
+  console.log(r(1,10));
+})
+define('random',()=>{
+  return  (a,z) => {
+      return Math.floor(Math.random()*z+a);
+  };
+});
 const log = console.log;
 
 log('Hello Bootstrap');
 require(['test-module','memory-game'], function(test) {
   log(test.test());
 });
+
