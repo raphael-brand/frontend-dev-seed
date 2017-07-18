@@ -1,8 +1,7 @@
 {
   "js": {
     "src": [
-      "node_modules/requirejs/require.js",
-      "node_modules/three/build/three.min.js"
+      "node_modules/requirejs/require.js"
   ],
     "dest": "./dist/js/vendor"
   },

@@ -57,16 +57,23 @@ gulp.task('js-vendor', function () {
     (typeof vendorConfig.js.src == 'string' || vendorConfig.js.src.length === 0)) {
     throw new Error('no vendor scripts added. \nvendor.json:\nuse src["file.a.js"]')
   }
-  return gulp.src(vendorConfig.js.src)
-      .pipe(uglifyjs({ output: { comments: /^!|@preserve|@license|@cc_on/i } }))
-      .pipe(rename({ suffix: '.min' }))
+  vendorConfig.js.src.map((value) => {
+    console.log('Building', value, '...');
+    let suffix = ''
+    suffix = (!/\.min/.test(value) ? '.min' : '');
+    
+    gulp.src(value)
+      .pipe(uglifyjs({ output: { comments: /^!|@preserve|@?license|@cc_on/i } }))
+      .pipe(rename({ "suffix": suffix }))
       .pipe(gulp.dest(vendorConfig.js.dest))
+  });
 });
 
 gulp.task('js', function () {
   return gulp.src([
     'app/js/test-module.js',
     'app/js/acceleration.js',
+    'app/js/three-scene.js',
     'app/js/main.js']
   )
     .pipe(concat('main.js'))
@@ -86,31 +93,3 @@ gulp.task('default', ['sass', 'js', 'templates'], function () {
   gulp.watch('./app/sass/*.sass', ['sass']);
   gulp.watch('./app/*.pug', ['pug-watch']);
 });
-
-
-/*
-gulp.task('uglify-vendor', function () {
-
-  console.dir(arguments);
-  return;
-  let optionFiles;
-
-  optionFiles = process.argv.filter((option, index, arr) => {
-    if (/\-\-file/gi.test(arr[index - 1])) {
-      //optionFile = index+1;
-      return arr[index];
-    }
-    return false;
-  });
-  if (optionFiles.length) {
-    optionFiles.map((src) => {
-      console.log(src);
-      return gulp.src(src) // could do this cli-wise with process.argv
-        .pipe(uglifyjs({ output: { comments: /^!|@preserve|@license|@cc_on/i } }))
-        .pipe(rename(src.replace(/.+\/(\w+)\.js$/gi, '$1.min.js')))
-        .pipe(gulp.dest('./dist/js/vendor', { overwrite: true }));
-    });
-  }
-
-});
-*/

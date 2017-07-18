@@ -16,3 +16,6 @@ require(['test-module', 'acceleration'], function(test, acc) {
   ]);
   acc.draw() && acc.printMap()
 });
+require(['three-scene'], (Scene) => {
+  Scene.animate({rotation:{speed:{x:0.01, y:0.01}}})
+})

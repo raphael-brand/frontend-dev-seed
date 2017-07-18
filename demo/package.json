@@ -5,7 +5,7 @@
   "main": "Gulpfile.js",
   "private": true,
   "scripts": {
-    "start": "npm run check-vendor && gulp",
+    "start": "npm run check-vendor && npm run vendor && gulp",
     "check-vendor": "test -d node_modules || (npm install) || (echo 'npm not installed. Please run \"npm install -g npm\"' && exit 1)",
     "vendor": "gulp vendor-scripts",
     "css": "gulp sass",
@@ -17,7 +17,7 @@
   },
   "author": "Raphael Brand<info@raphaelbrand.de>",
   "license": "MIT",
-  "devDependencies": { 
+  "devDependencies": {
     "browser-sync": "^2.17.5",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
@@ -25,11 +25,10 @@
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
     "gulp-uglify": "^3.0.0",
-    "nodemon": "^1.11.0"
+    "nodemon": "^1.11.0",
+    "requirejs": "^2.3.3"
   },
   "dependencies": {
-    "requirejs": "^2.3.3",
-    "bootstrap-sass": "^3.3.7",
-    "three": "^0.86.0"
+    "bootstrap-sass": "^3.3.7"
   }
 }

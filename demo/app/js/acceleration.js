@@ -31,16 +31,16 @@ define('acceleration', () => {
     return true;
   };
   var onKeyDown = function onKeyDown(e) {
-    var code = codes[e.keyCode] != undefined ? codes[e.keyCode] : e.target.className;
+    var code = codes[e.keyCode] ? codes[e.keyCode] : e.target.className;
 
     move(code) && draw() && setTimeout(function () {
       Array.from(document.querySelectorAll(".btnWrap button")).forEach(function (el) {
         return el.classList.remove("active");
       });
       return true;
-    }, 400) && document.querySelector("." + code).classList.add("active");
+    }, 400) && document.querySelector('.' + code).classList.add("active");
     setTimeout(function () {
-      return document.querySelector("." + code).blur();
+      return document.querySelector('.' + code).blur();
     }, 400);
   };
 
@@ -85,7 +85,7 @@ define('acceleration', () => {
       level[current.y][current.x] = free;
       level[playerPosition.y][playerPosition.x] = player;
       playerAt = playerPosition;
-      console.clear();
+      //console.clear();
       console.log("Player has moved " + direction);
     }
     return hasMoved;
@@ -121,7 +121,7 @@ define('acceleration', () => {
 
   //move();
   //draw();
-  console.clear();
+  //console.clear();
   document.querySelector(".up").focus();
   setTimeout(function (el) {
     el.classList.remove("active"), el.blur();
