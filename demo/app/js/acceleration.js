@@ -1,5 +1,6 @@
 "use strict";
 define('acceleration', () => {
+  this.onMove = Function;
   var move = undefined;
   var draw = undefined;
   var printMap = undefined;
@@ -31,12 +32,11 @@ define('acceleration', () => {
     return true;
   };
   this.getPosition = function() {
-    console.log(playerAt);
     let pos = playerAt;
     pos.z = pos.y; // mhh ...
+    console.dir(pos);
     return playerAt ? pos : playerPosition
   }
-  this.onMove;
   var onKeyDown = function onKeyDown(e) {
     var code = codes[e.keyCode] ? codes[e.keyCode] : e.target.className;
 
