@@ -32,7 +32,9 @@ define('acceleration', () => {
   };
   this.getPosition = function() {
     console.log(playerAt);
-    return playerAt ? playerAt : playerPosition
+    let pos = playerAt;
+    pos.z = pos.y; // mhh ...
+    return playerAt ? pos : playerPosition
   }
   this.onMove;
   var onKeyDown = function onKeyDown(e) {
