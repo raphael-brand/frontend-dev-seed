@@ -6,7 +6,7 @@ define('acceleration', () => {
   var canvas, ctx;
   var size = 300;
   var fieldSize = size / 8;
-  var playerPosition = { x: 0, y: 0 };
+  var playerPosition = { x: 0, y: 0, z: 0 };
 
   var free = 0;
   var wall = 1;
@@ -20,6 +20,7 @@ define('acceleration', () => {
   codes[39] = "right";
 
   var playerAt = playerPosition;
+  var hasMovedAxises = playerPosition;
 
   draw = function draw() {
     ctx.fillStyle = "darkgray";
@@ -31,8 +32,8 @@ define('acceleration', () => {
     return true;
   };
   this.getPosition = function() {
-    console.log(playerAt);
-    return playerAt ? playerAt : playerPosition
+    console.log('playerAt:', playerAt);
+    return hasMovedAxises;
   }
   this.onMove;
   var onKeyDown = function onKeyDown(e) {
@@ -57,30 +58,34 @@ define('acceleration', () => {
   move = function move(direction) {
     //console.log("moving", direction);
     var current = JSON.parse(JSON.stringify(playerPosition));
-
+    hasMovedAxises = {x:0, y:0, z:0};
     var hasMoved = false;
     switch (direction) {
       case "up":
         if (playerPosition.y > 0 && level[playerPosition.y - 1] && level[playerPosition.y - 1][playerPosition.x] === free) {
           --playerPosition.y;
+          hasMovedAxises.y = 1;
           hasMoved = true;
         }
         break;
       case "down":
         if (playerPosition.y < level.length - 1 && level[playerPosition.y + 1] && level[playerPosition.y + 1][playerPosition.x] === free) {
           ++playerPosition.y;
+          hasMovedAxises.y = -1;
           hasMoved = true;
         }
         break;
       case "left":
         if (playerPosition.x > 0 && level[playerPosition.y][playerPosition.x - 1] === free) {
           --playerPosition.x;
+          hasMovedAxises.x = 0;
           hasMoved = true;
         }
         break;
       case "right":
         if (playerPosition.x < level[playerPosition.y].length - 1 && level[playerPosition.y][playerPosition.x + 1] === free) {
           ++playerPosition.x;
+          hasMovedAxises.x = 1;
           hasMoved = true;
         }
         break;

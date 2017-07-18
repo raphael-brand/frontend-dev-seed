@@ -19,6 +19,9 @@ require(['test-module', 'acceleration'], function (test, acc) {
 
 require(['three-scene', 'acceleration'], (Scene, acc) => {
   Scene.animate({ rotation: { speed: { x: 0.01, y: 0 } } });
-  Scene.animate({ position: { x: 100, y: 0 } })
-  acc.onMove(acc.getPosition)
+  //Scene.animate({ position: { x: 100, y: 0 } })
+  let setPosition = () => {
+    Scene.animate({ position: acc.getPosition() })
+  }
+  acc.onMove(setPosition)
 })
