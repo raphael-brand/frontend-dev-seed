@@ -30,6 +30,11 @@ define('acceleration', () => {
     printMap();
     return true;
   };
+  this.getPosition = function() {
+    console.log(playerAt);
+    return playerAt ? playerAt : playerPosition
+  }
+  this.onMove;
   var onKeyDown = function onKeyDown(e) {
     var code = codes[e.keyCode] ? codes[e.keyCode] : e.target.className;
 
@@ -87,6 +92,7 @@ define('acceleration', () => {
       playerAt = playerPosition;
       //console.clear();
       console.log("Player has moved " + direction);
+      onMove()
     }
     return hasMoved;
   };
@@ -145,6 +151,12 @@ define('acceleration', () => {
     },
     setLevel: (matrix) => {
       level = matrix;
+    },
+    getPosition: this.getPosition,
+    onMove: callback => {
+      if(typeof callback == 'function')
+        onMove = callback;
+      else log('no function')
     }
   }
 });
