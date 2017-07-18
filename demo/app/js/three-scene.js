@@ -7,7 +7,7 @@ define('three-scene', () => {
 
   function init() {
     scene = new THREE.Scene();
-    camera = new THREE.PerspectiveCamera(100, 1, 0.1, 1000);
+    camera = new THREE.PerspectiveCamera(30, 1, 1, 1000);
     container = document.createElement('div');
     document.getElementById('perspective').appendChild(container);
 
@@ -19,8 +19,8 @@ define('three-scene', () => {
     console.log(renderer);
     renderer.setSize(w, h);
 
-    camera_start.x = 50;
-    camera_start.y = 50;
+    camera_start.x = 0;
+    camera_start.y = 0;
     camera_start.z = 300;
 
     camera.position = camera_start;
@@ -37,29 +37,32 @@ define('three-scene', () => {
     cube.rotation.x += rotation.speed.x;
     cube.rotation.y += rotation.speed.y;
   }
-  let position = (position={x:0,y:0,z:0}) => {
+  let position = (pos={ x:0, y:0, z:0 }) => {
+    //requestAnimationFrame(() => position({'position': pos}));
     //cube.position = position;
     //return;
-    if(position.x > 0)
-      cube.translateX(position.x);
-    else
-      cube.position.x = 0;
+    for(let p in pos) {
+      console.log(p, ':', pos[p]);
+      if(position[p] > 0)
+        cube['translate'+p.toUpperCase()](pos[p] + 200);
+      //else
+        //cube.position[p] = 0;
+    }
 
-    cube.translateY(position.y);
-    cube.translateZ(position.z);
+    // cube.translateY(position.y);
+    // cube.translateZ(position.z);
     //console.log(cube);
     //cube.updateMatrix();
-    //requestAnimationFrame(() => animate(position));
+    
+    //requestAnimationFrame(() => animate({'position': pos}));
     log(cube.position.x);
     log('x:%i, y:%i, z:%i', cube.position.x, cube.position.y, cube.position.z)
   }
 
   animate = (params) => {
     requestAnimationFrame(() => animate(params));
-    if(params.rotation) rotationSpeed(params.rotation);
-    if(params.position) position(params.position);
-    //console.info(cube.rotation.y, scene, camera, cube);
     scene.add(cube);
+    camera.lookAt(cube);
     renderer.render(scene, camera);
     document.querySelector('#perspective_stats').innerHTML = cube.position.x;
   }

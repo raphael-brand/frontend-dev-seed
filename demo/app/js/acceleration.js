@@ -71,14 +71,14 @@ define('acceleration', () => {
       case "down":
         if (playerPosition.y < level.length - 1 && level[playerPosition.y + 1] && level[playerPosition.y + 1][playerPosition.x] === free) {
           ++playerPosition.y;
-          hasMovedAxises.y = -1;
+          hasMovedAxises.y = 1;
           hasMoved = true;
         }
         break;
       case "left":
         if (playerPosition.x > 0 && level[playerPosition.y][playerPosition.x - 1] === free) {
           --playerPosition.x;
-          hasMovedAxises.x = 0;
+          hasMovedAxises.x = 1;
           hasMoved = true;
         }
         break;
