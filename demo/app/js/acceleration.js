@@ -1,12 +1,11 @@
 "use strict";
 define('acceleration', () => {
-  var move = undefined;
-  var draw = undefined;
-  var printMap = undefined;
+  this.onMove = Function;
+  var move, draw, printMap;
   var canvas, ctx;
   var size = 300;
   var fieldSize = size / 8;
-  var playerPosition = { x: 0, y: 0, z: 0 };
+  var playerPosition = { x: 0, y: 0 };
 
   var free = 0;
   var wall = 1;
@@ -20,7 +19,6 @@ define('acceleration', () => {
   codes[39] = "right";
 
   var playerAt = playerPosition;
-  var hasMovedAxises = playerPosition;
 
   draw = function draw() {
     ctx.fillStyle = "darkgray";
@@ -32,10 +30,11 @@ define('acceleration', () => {
     return true;
   };
   this.getPosition = function() {
-    console.log('playerAt:', playerAt);
-    return hasMovedAxises;
+    let pos = playerAt;
+    pos.z = pos.y; // mhh ...
+    console.dir(pos);
+    return playerAt ? pos : playerPosition
   }
-  this.onMove;
   var onKeyDown = function onKeyDown(e) {
     var code = codes[e.keyCode] ? codes[e.keyCode] : e.target.className;
 
@@ -44,9 +43,10 @@ define('acceleration', () => {
         return el.classList.remove("active");
       });
       return true;
-    }, 400) && document.querySelector('.' + code).classList.add("active");
+    }, 400) && code && document.querySelector('.' + code).classList.add("active");
     setTimeout(function () {
-      return document.querySelector('.' + code).blur();
+      if(code)
+        return document.querySelector('.' + code).blur();
     }, 400);
   };
 
@@ -58,34 +58,30 @@ define('acceleration', () => {
   move = function move(direction) {
     //console.log("moving", direction);
     var current = JSON.parse(JSON.stringify(playerPosition));
-    hasMovedAxises = {x:0, y:0, z:0};
+
     var hasMoved = false;
     switch (direction) {
       case "up":
         if (playerPosition.y > 0 && level[playerPosition.y - 1] && level[playerPosition.y - 1][playerPosition.x] === free) {
           --playerPosition.y;
-          hasMovedAxises.y = 1;
           hasMoved = true;
         }
         break;
       case "down":
         if (playerPosition.y < level.length - 1 && level[playerPosition.y + 1] && level[playerPosition.y + 1][playerPosition.x] === free) {
           ++playerPosition.y;
-          hasMovedAxises.y = 1;
           hasMoved = true;
         }
         break;
       case "left":
         if (playerPosition.x > 0 && level[playerPosition.y][playerPosition.x - 1] === free) {
           --playerPosition.x;
-          hasMovedAxises.x = 1;
           hasMoved = true;
         }
         break;
       case "right":
         if (playerPosition.x < level[playerPosition.y].length - 1 && level[playerPosition.y][playerPosition.x + 1] === free) {
           ++playerPosition.x;
-          hasMovedAxises.x = 1;
           hasMoved = true;
         }
         break;
@@ -101,6 +97,21 @@ define('acceleration', () => {
     }
     return hasMoved;
   };
+
+    let toggleView = false // window.innerWidth <= 414;
+  let onWindowResize = (update) => {
+    
+    if(update)
+      toggleView = window.innerWidth <= 414;
+    
+    if(toggleView)
+        document.querySelector('.info.button').classList.add('active')
+    else
+        document.querySelector('.info.button').classList.remove('active')
+  };
+  
+  onWindowResize(false);
+
 
   var printMap = function printMap() {
     //var x, y;
@@ -138,10 +149,12 @@ define('acceleration', () => {
     el.classList.remove("active"), el.blur();
     document.querySelector(".info.button").focus();
     document.querySelector(".overlay").classList.add("hidden");
+    window.addEventListener('resize', onWindowResize);
     //document.querySelector('.info.button').innerHTML += '<br>' + printMap();
   }, 500, document.querySelector(".up"));
   document.querySelector(".info.button").addEventListener("click", function (e) {
-    e.target.classList.add("active");
+    toggleView = !toggleView
+    onWindowResize(false)
   }, false);
   console.log("Legend:\n player is 2,\nfield free-to-go is 0,\nno-go is 1");
   //printMap();
@@ -156,6 +169,7 @@ define('acceleration', () => {
     },
     setLevel: (matrix) => {
       level = matrix;
+      fieldSize = size / level[0].length;
     },
     getPosition: this.getPosition,
     onMove: callback => {
