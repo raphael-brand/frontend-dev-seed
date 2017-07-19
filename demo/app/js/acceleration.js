@@ -45,9 +45,10 @@ define('acceleration', () => {
         return el.classList.remove("active");
       });
       return true;
-    }, 400) && document.querySelector('.' + code).classList.add("active");
+    }, 400) && code && document.querySelector('.' + code).classList.add("active");
     setTimeout(function () {
-      return document.querySelector('.' + code).blur();
+      if(code)
+        return document.querySelector('.' + code).blur();
     }, 400);
   };
 
@@ -99,6 +100,21 @@ define('acceleration', () => {
     return hasMoved;
   };
 
+    let toggleView = false // window.innerWidth <= 414;
+  let onWindowResize = (update) => {
+    
+    if(update)
+      toggleView = window.innerWidth <= 414;
+    
+    if(toggleView)
+        document.querySelector('.info.button').classList.add('active')
+    else
+        document.querySelector('.info.button').classList.remove('active')
+  };
+  
+  onWindowResize(false);
+
+
   var printMap = function printMap() {
     //var x, y;
     //x=0, y=0;
@@ -135,10 +151,12 @@ define('acceleration', () => {
     el.classList.remove("active"), el.blur();
     document.querySelector(".info.button").focus();
     document.querySelector(".overlay").classList.add("hidden");
+    window.addEventListener('resize', onWindowResize);
     //document.querySelector('.info.button').innerHTML += '<br>' + printMap();
   }, 500, document.querySelector(".up"));
   document.querySelector(".info.button").addEventListener("click", function (e) {
-    e.target.classList.add("active");
+    toggleView = !toggleView
+    onWindowResize(false)
   }, false);
   console.log("Legend:\n player is 2,\nfield free-to-go is 0,\nno-go is 1");
   //printMap();
