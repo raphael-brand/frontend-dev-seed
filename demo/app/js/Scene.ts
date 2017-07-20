@@ -20,7 +20,7 @@ export default class Scene implements IScene {
   camera_start: THREE.Vector3;
 
   constructor() {
-    
+
     this.w = this.h = 300;
     this.camera_start = new THREE.Vector3();
     this.init();
@@ -90,16 +90,5 @@ let position = (pos = { x: 0, y: 0, z: 0 }) => {
   log('x:%i, y:%i, z:%i', cube.position.x, cube.position.y, cube.position.z)
 }
 
-animate = (params) => {
-  requestAnimationFrame(() => animate(params));
-  scene.add(cube);
-  camera.lookAt(cube);
-  renderer.render(scene, camera);
-  document.querySelector('#perspective_stats').innerHTML = cube.position.x;
-}
-return {
-  "animate": animate
-}
 
-console.log(currentFrame);
 */

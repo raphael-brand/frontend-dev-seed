@@ -1,7 +1,7 @@
 {
     "compilerOptions": {
       "typeRoots" : ["./typings/globals/"],
-      "types" : ["three"]
+      "types" : ["three", "three-projector", "three-canvasrenderer"]
     },
     "include": [
       "./app/js/*.ts"

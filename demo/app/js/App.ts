@@ -3,6 +3,7 @@ import Scene from './Scene';
 
 const log = console.log;
 let acc = new Acceleration();
+let scene = new Scene();
 
 acc.setCanvas(document.querySelector('#canvas'));
 acc.setLevel([
@@ -18,6 +19,8 @@ acc.setLevel([
 acc.draw() && acc.printMap();
 
 let setPosition = () => {
-  Scene.animate({ position: acc.getPosition() })
+  scene.animate({ position: acc.getPosition() })
 }
-acc.onMove(setPosition)
+acc.onMove(setPosition);
+
+

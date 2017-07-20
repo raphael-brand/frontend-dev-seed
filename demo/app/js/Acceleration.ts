@@ -33,7 +33,7 @@ export default class Acceleration implements IAcceleration {
   size: number;
 
   PlayerPosition: { x: number, y: number, z: number };
-  canvas: Element;
+  canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   codes: string[];
   fieldSize: number;
@@ -206,7 +206,7 @@ export default class Acceleration implements IAcceleration {
     return info + str;
   }
 
-  setCanvas(canvas: Element): void {
+  setCanvas(canvas: HTMLCanvasElement): void {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
   }
