@@ -1,0 +1,9 @@
+{
+    "compilerOptions": {
+      "typeRoots" : ["./typings/globals/"],
+      "types" : ["three"]
+    },
+    "include": [
+      "./app/js/*.ts"
+    ]
+}

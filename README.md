@@ -5,6 +5,7 @@
 ``` bash
   git clone https://github.com/raphael-brand/frontend-dev-seed.git your-directory-name
   cd your-directory-name/demo
+  typings install # type definitions for THREE.js
   npm start #start the app
 ```
 ### start coding
@@ -17,4 +18,5 @@
 
 - [NodeJS / NPM](https://nodejs.org) 
 - [Gulp Task Runner](https://gulpjs.com) - install with `npm install -g gulp-cli`
+- Typings - install with `npm install -g typings` 
 

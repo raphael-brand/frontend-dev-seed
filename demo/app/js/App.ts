@@ -1,4 +1,5 @@
 import Acceleration from './acceleration';
+import Scene from './Scene';
 
 const log = console.log;
 let acc = new Acceleration();
@@ -15,3 +16,8 @@ acc.setLevel([
   [1, 0, 0, 0, 0, 0, 0, 1]
 ]);
 acc.draw() && acc.printMap();
+
+let setPosition = () => {
+  Scene.animate({ position: acc.getPosition() })
+}
+acc.onMove(setPosition)
