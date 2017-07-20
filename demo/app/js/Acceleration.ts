@@ -2,16 +2,16 @@
 
 interface IPlayerPosition { x: number, y: number, z: number }
 interface IAcceleration {
-  canvas: HTMLCanvasElement;
+  canvas: Element;
   ctx: CanvasRenderingContext2D;
   codes: string[];
   fieldSize: number;
   size: number;
   playerPosition: IPlayerPosition;
   playerAt: IPlayerPosition;
-  readonly free: number;
-  readonly wall: number;
-  readonly player: number;
+  free: number;
+  wall: number;
+  player: number;
 
   // map view
   toggleView: boolean;
@@ -33,7 +33,7 @@ export default class Acceleration implements IAcceleration {
   size: number;
 
   PlayerPosition: { x: number, y: number, z: number };
-  canvas: HTMLCanvasElement;
+  canvas: Element;
   ctx: CanvasRenderingContext2D;
   codes: string[];
   fieldSize: number;
@@ -43,9 +43,9 @@ export default class Acceleration implements IAcceleration {
   private level: number[][];
   private onMoveCallBack: Function;
 
-  readonly free: number;
-  readonly wall: number;
-  readonly player: number;
+  free: number;
+  wall: number;
+  player: number;
 
   // map view
   toggleView: boolean;
@@ -54,10 +54,10 @@ export default class Acceleration implements IAcceleration {
     this.size = 300;
     this.fieldSize = this.size / 1;
     this.playerPosition = { x: 0, y: 0, z: 0 };
+
     this.free = 0;
     this.wall = 1;
     this.player = 2;
-    this.level;
 
 
     this.codes = [];
@@ -206,7 +206,7 @@ export default class Acceleration implements IAcceleration {
     return info + str;
   }
 
-  setCanvas(canvas: HTMLCanvasElement): void {
+  setCanvas(canvas: Element): void {
     this.canvas = canvas;
     this.ctx = this.canvas.getContext('2d');
   }

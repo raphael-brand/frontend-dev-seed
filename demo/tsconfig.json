@@ -1,9 +1,32 @@
 {
-    "compilerOptions": {
-      "typeRoots" : ["./typings/globals/"],
-      "types" : ["three", "three-projector", "three-canvasrenderer"]
-    },
-    "include": [
-      "./app/js/*.ts"
-    ]
+  "compilerOptions": {
+    "target": "es5",
+    "module": "amd",
+    "declaration": true,
+    "noImplicitAny": false,
+    "noResolve": true,
+    "removeComments": true,
+    "noLib": false,
+    "emitDecoratorMetadata": true,
+    "experimentalDecorators": true
+  },
+  "typeRoots": [
+    "./typings/globals/"
+  ],
+  "types": [
+    "three",
+    "three-projector",
+    "three-canvasrenderer"
+  ],
+  "include": [
+    "./app/js/"
+  ],
+  "exclude": [
+    "./typings/globals/",
+    "./typings/index.d.ts"
+  ],
+  "files": [
+    "app/js/App.ts"
+  ],
+  "outDir": "./dist/js/"
 }

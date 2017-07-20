@@ -1,5 +1,5 @@
+// /// <reference path="../../typings/index.d.ts" />
 "use strict";
-import * as THREE from 'three'
 
 interface IScene {
   init(): void;

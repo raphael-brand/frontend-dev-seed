@@ -1,4 +1,4 @@
-import Acceleration from './acceleration';
+import Acceleration from './Acceleration';
 import Scene from './Scene';
 
 const log = console.log;
