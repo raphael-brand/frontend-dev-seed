@@ -1,5 +1,5 @@
-import Acceleration from './Acceleration';
-import Scene from './Scene';
+import {Acceleration} from './Acceleration';
+import {Scene} from './Scene';
 
 const log = console.log;
 let acc = new Acceleration();
@@ -22,5 +22,3 @@ let setPosition = () => {
   scene.animate({ position: acc.getPosition() })
 }
 acc.onMove(setPosition);
-
-

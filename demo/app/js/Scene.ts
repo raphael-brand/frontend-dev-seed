@@ -1,12 +1,11 @@
-// /// <reference path="../../typings/index.d.ts" />
-"use strict";
+/// <reference path="../../typings/index.d.ts" />
 
 interface IScene {
   init(): void;
   animate(params: Object): void;
 }
 
-export default class Scene implements IScene {
+class Scene implements IScene {
   scene: THREE.Scene;
   camera: THREE.PerspectiveCamera;
   geometry: THREE.BoxGeometry;
@@ -59,6 +58,8 @@ export default class Scene implements IScene {
   }
 
 }
+
+
 /*
 
 

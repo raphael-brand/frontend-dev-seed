@@ -1,8 +1,19 @@
-"use strict";
-
 interface IPlayerPosition { x: number, y: number, z: number }
+interface ArrayConstructor {
+  from(arrayLike: any, mapFn?, thisArg?): Array<any>;
+}
+interface Element {
+  focus();
+  blur();
+  innerHTML: string;
+}
+
+interface TargetElement extends EventTarget {
+  className: string;
+}
+
 interface IAcceleration {
-  canvas: Element;
+  canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   codes: string[];
   fieldSize: number;
@@ -26,14 +37,12 @@ interface IAcceleration {
   printMap(): void;
 }
 
-
-
-export default class Acceleration implements IAcceleration {
+class Acceleration implements IAcceleration {
 
   size: number;
 
   PlayerPosition: { x: number, y: number, z: number };
-  canvas: Element;
+  canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
   codes: string[];
   fieldSize: number;
@@ -119,8 +128,8 @@ export default class Acceleration implements IAcceleration {
   }
 
   onKeyDown(e: KeyboardEvent) {
-
-    var code = this.codes[e.keyCode] ? this.codes[e.keyCode] : e.target.className;
+    let target: TargetElement = <TargetElement>e.target;
+    var code = this.codes[e.keyCode] ? this.codes[e.keyCode] : target.className;
     this.move(code) && this.draw() && setTimeout(function () {
 
       Array.from(document.querySelectorAll(".btnWrap button")).forEach(function (el) {
@@ -207,7 +216,7 @@ export default class Acceleration implements IAcceleration {
   }
 
   setCanvas(canvas: Element): void {
-    this.canvas = canvas;
+    this.canvas = <HTMLCanvasElement>canvas;
     this.ctx = this.canvas.getContext('2d');
   }
 
