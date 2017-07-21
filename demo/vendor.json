@@ -1,0 +1,13 @@
+{
+  "js": {
+    "src": [
+      "node_modules/requirejs/require.js"
+  ],
+    "dest": "./dist/js/vendor"
+  },
+  "css": {
+    "src": [
+  ],
+    "dest": "./dist/css/vendor"
+  }
+}
