@@ -4,9 +4,14 @@ var reload = browserSync.reload;
 var bsConfig = require('./bs-config.json');
 var sass = require('gulp-sass');
 var pug = require('gulp-pug');
-var uglifyjs = require('gulp-uglify');
-var rename = require('gulp-rename');
+var uglify = require('gulp-uglify');
 var concat = require('gulp-concat');
+var prefix = require('gulp-autoprefixer');
+
+
+var prefixerOptions = {
+  browsers: ['last 2 versions']
+};
 
 /**
  * Compile pug files into HTML
@@ -30,8 +35,12 @@ gulp.task('templates', function () {
  */
 gulp.task('pug-watch', ['templates'], reload);
 
+gulp.task('json', function () {
+  return gulp.src(['./app/js/data.json'])
+    .pipe(gulp.dest('./dist/js'))
+})
+
 gulp.task('css-vendor', function () {
-  //console.log('bootstrap not used ...');
   return gulp.src([
     'node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss'
   ])
@@ -45,10 +54,14 @@ gulp.task('css-vendor', function () {
 gulp.task('sass', function () {
   return gulp.src([
     './app/sass/**/*.sass'])
-    .pipe(sass()).on('error', sass.logError)
+    .pipe(sass({ outputStyle: 'expanded' })).on('error', sass.logError)
+    .pipe(prefix(prefixerOptions))
+    .pipe(concat('main.css'))
     .pipe(gulp.dest('./dist/css'))
     .pipe(reload({ stream: true }));
 });
+
+gulp.task('sass-watch', ['sass'], reload);
 
 gulp.task('js-vendor', function () {
 
@@ -78,15 +91,17 @@ gulp.task('js', function () {
     .pipe(reload({ stream: true }))
 });
 
-gulp.task('vendor-scripts', ['templates', 'js-vendor'], reload);
+gulp.task('js-watch', ['js'], reload);
+
+gulp.task('vendor-scripts', ['js-vendor', 'css-vendor']);
 
 /**
  * Serve and watch the scss/pug files for changes
  */
-gulp.task('default', ['sass', 'js', 'templates'], function () {
+gulp.task('default', ['sass', 'js', 'templates', 'json'], function () {
 
   browserSync(bsConfig);
-  gulp.watch('./app/js/**/*.js', ['js'], reload);
-  gulp.watch('./app/sass/**/*.sass', ['sass'], reload);
+  gulp.watch('./app/js/*.js', ['js-watch'], reload);
+  gulp.watch('./app/sass/**/*.sass', ['sass-watch'], reload);
   gulp.watch('./app/*.pug', ['pug-watch'], reload);
 });
