@@ -1,9 +1,7 @@
 "use strict";
 define('acceleration', () => {
   this.onMove = Function;
-  var move = undefined;
-  var draw = undefined;
-  var printMap = undefined;
+  var move, draw, printMap;
   var canvas, ctx;
   var size = 300;
   var fieldSize = size / 8;
@@ -171,6 +169,7 @@ define('acceleration', () => {
     },
     setLevel: (matrix) => {
       level = matrix;
+      fieldSize = size / level[0].length;
     },
     getPosition: this.getPosition,
     onMove: callback => {
