@@ -4,7 +4,7 @@ var reload = browserSync.reload;
 var bsConfig = require('./bs-config.json');
 var sass = require('gulp-sass');
 var pug = require('gulp-pug');
-var uglifyjs = require('gulp-uglifyjs');
+var uglifyjs = require('gulp-uglify');
 var concat = require('gulp-concat');
 
 /**
