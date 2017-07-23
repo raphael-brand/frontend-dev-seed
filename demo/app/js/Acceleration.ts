@@ -1,11 +1,16 @@
-interface IPlayerPosition { x: number, y: number, z: number }
+
+class PlayerPosition {
+  x:number;
+  y:number;
+  z:number;
+
+  constructor() {
+    this.x = this.y = this.z = 0;
+  }
+  
+}
 interface ArrayConstructor {
   from(arrayLike: any, mapFn?, thisArg?): Array<any>;
-}
-interface Element {
-  focus();
-  blur();
-  innerHTML: string;
 }
 
 interface TargetElement extends EventTarget {
@@ -15,20 +20,22 @@ interface TargetElement extends EventTarget {
 interface IAcceleration {
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
-  codes: string[];
+  codes: Object;
   fieldSize: number;
   size: number;
-  playerPosition: IPlayerPosition;
-  playerAt: IPlayerPosition;
+  playerPosition: any;
+  playerAt: any;
   free: number;
   wall: number;
   player: number;
+  level: number[][];
+  onMoveCallback: any;
 
   // map view
   toggleView: boolean;
 
   move(direction: string): boolean;
-  getPosition(): IPlayerPosition;
+  getPosition(): any;
   setCanvas(canvas: Element): void;
   setLevel(map: number[][]): void;
   onMove(callback: Function): void;
@@ -36,21 +43,37 @@ interface IAcceleration {
   draw(): boolean;
   printMap(): void;
 }
+/**
+ * draws an Acceleration object with keyboard support to a given canvas element
+ * 
+ *   # example
+ *     let acc = new Acceleration();
+ *     acc.setCanvas(document.querySelector('#canvas'));
+ *     acc.setLevel([
+ *     [2, 1, 1, 1, 1, 1, 1, 0],
+ *     [0, 1, 0, 0, 0, 1, 1, 0],
+ *     [0, 1, 0, 1, 0, 1, 0, 0],
+ *     [0, 0, 0, 1, 0, 1, 0, 1],
+ *     [1, 1, 1, 1, 0, 1, 0, 1],
+ *     [1, 0, 0, 0, 0, 1, 0, 1],
+ *     [1, 0, 1, 1, 1, 1, 0, 1],
+ *     [1, 0, 0, 0, 0, 0, 0, 1]
+ *    ]);
+ *     acc.draw() && acc.printMap();
+ */
 
-class Acceleration implements IAcceleration {
-
-  size: number;
-
-  PlayerPosition: { x: number, y: number, z: number };
+class BaseAcceleration implements IAcceleration {
+  onMoveCallback: any;
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
-  codes: string[];
+  codes: Object;
   fieldSize: number;
-  playerPosition: IPlayerPosition;
-  playerAt: IPlayerPosition;
+  playerPosition: PlayerPosition;
+  playerAt: PlayerPosition;
 
-  private level: number[][];
-  private onMoveCallBack: Function;
+  level: number[][];
+  size:number;
+  onMoveCallBack: any;
 
   free: number;
   wall: number;
@@ -59,21 +82,55 @@ class Acceleration implements IAcceleration {
   // map view
   toggleView: boolean;
 
-  contructor() {
-    this.size = 300;
-    this.fieldSize = this.size / 1;
-    this.playerPosition = { x: 0, y: 0, z: 0 };
+  move(direction:string) : boolean { return true }
+  getPosition() : any {}
+  setCanvas(canvas: Element): void {};
+  setLevel(map: number[][]): void {};
+  onMove(callback: Function): void {};
 
+  draw(): boolean {return true};
+  printMap(): void {};
+
+}
+class Acceleration extends BaseAcceleration {
+  size: number;
+
+  //PlayerPosition: PlayerPosition;
+  canvas: HTMLCanvasElement;
+  ctx: CanvasRenderingContext2D;
+  codes: Object;
+  fieldSize: number;
+  playerPosition: PlayerPosition;
+  playerAt: PlayerPosition;
+
+  level: number[][];
+  onMoveCallBack: any;
+
+  free: number;
+  wall: number;
+  player: number;
+
+  // map view
+  toggleView: boolean;
+
+  constructor() {
+    super();
+    console.log("constructor called")
+    this.size = 300;
+    console.log(this.size);
+    this.fieldSize = this.size / 1;
+    this.playerPosition = new PlayerPosition();
+    this.playerAt = this.playerPosition;
     this.free = 0;
     this.wall = 1;
     this.player = 2;
 
 
-    this.codes = [];
-    this.codes[38] = "up";
-    this.codes[40] = "down";
-    this.codes[37] = "left";
-    this.codes[39] = "right";
+    this.codes = Object.create(null);
+    this.codes["38"] = "up";
+    this.codes["40"] = "down";
+    this.codes["37"] = "left";
+    this.codes["39"] = "right";
 
     this.playerAt = this.playerPosition;
 
@@ -90,14 +147,13 @@ class Acceleration implements IAcceleration {
     // collapse map view for desktop and expand for mobile devices having a smaller screen width than 414
     this.onWindowResize(false);
 
-
     //move();
     //draw();
     //console.clear();
-    document.querySelector(".up").focus();
+    //document.querySelector(".up").focus();
     setTimeout(function (el) {
       el.classList.remove("active"), el.blur();
-      document.querySelector(".info.button").focus();
+      //document.querySelector(".info.button").focus();
       document.querySelector(".overlay").classList.add("hidden");
       window.addEventListener('resize', this.onWindowResize);
       //document.querySelector('.info.button').innerHTML += '<br>' + printMap();
@@ -108,13 +164,14 @@ class Acceleration implements IAcceleration {
     }, false);
     console.log("Legend:\n player is 2,\nfield free-to-go is 0,\nno-go is 1");
     //printMap();
-
+    // return this;
   }
 
   draw() {
     this.ctx.fillStyle = "darkgray";
     this.ctx.fillRect(0, 0, this.size, this.size);
     this.ctx.fillStyle = "lightgreen";
+    console.dir(this.playerPosition, this.playerAt);
     this.ctx.fillRect(this.playerPosition.x * this.fieldSize, this.playerPosition.y * this.fieldSize, this.fieldSize, this.fieldSize);
     this.printMap();
     return true;
@@ -129,7 +186,8 @@ class Acceleration implements IAcceleration {
 
   onKeyDown(e: KeyboardEvent) {
     let target: TargetElement = <TargetElement>e.target;
-    var code = this.codes[e.keyCode] ? this.codes[e.keyCode] : target.className;
+    console.dir(e);
+    var code = this.codes[e.keyCode.toString()] ? this.codes[e.keyCode.toString()] : target.className;
     this.move(code) && this.draw() && setTimeout(function () {
 
       Array.from(document.querySelectorAll(".btnWrap button")).forEach(function (el) {
@@ -139,7 +197,8 @@ class Acceleration implements IAcceleration {
     }, 400) && code && document.querySelector('.' + code).classList.add("active");
     setTimeout(function () {
       if (code)
-        return document.querySelector('.' + code).blur();
+        //return document.querySelector('.' + code).blur();
+        return true;
     }, 400);
   }
 
@@ -222,10 +281,13 @@ class Acceleration implements IAcceleration {
 
   setLevel(map: number[][]) {
     this.level = map;
-    this.fieldSize = this.size / this.level[0].length;
+    console.log(this.size, this.level[0].length);
+    this.fieldSize = Math.floor(this.size / this.level[0].length);
+    console.log(Math.floor(this.size / this.level[0].length));
   }
 
   onMove(callback: Function) {
     this.onMoveCallBack = callback;
   }
 }
+//export {IAcceleration, PlayerPosition, Acceleration};

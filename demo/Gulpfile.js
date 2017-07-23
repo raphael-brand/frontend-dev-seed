@@ -71,10 +71,9 @@ gulp.task('js-vendor', function () {
 
 gulp.task('js', function () {
   return gulp.src([
-    'app/js/test-module.js',
-    'app/js/acceleration.js',
-    'app/js/three-scene.js',
-    'app/js/main.js']
+    'app/js/Acceleration.js',
+    'app/js/Scene.js',
+    'app/js/App.js']
   )
     .pipe(concat('main.js'))
     .pipe(gulp.dest('./dist/js'))

@@ -2,7 +2,7 @@
 
 interface IScene {
   init(): void;
-  animate(params: Object): void;
+  animate( params: Object ): void;
 }
 
 class Scene implements IScene {
@@ -28,33 +28,33 @@ class Scene implements IScene {
   init() {
 
     this.scene = new THREE.Scene();
-    this.camera = new THREE.PerspectiveCamera(30, 1, 1, 1000);
-    this.container = document.createElement('div');
+    this.camera = new THREE.PerspectiveCamera( 30, 1, 1, 1000 );
+    this.container = document.createElement( 'div' );
 
-    this.geometry = new THREE.BoxGeometry(50, 50, 50);
-    this.material = new THREE.MeshBasicMaterial({ color: 0xff0000 });
-    this.cube = new THREE.Mesh(this.geometry, this.material);
-    this.scene.add(this.cube);
+    this.geometry = new THREE.BoxGeometry( 50, 50, 50 );
+    this.material = new THREE.MeshBasicMaterial( { color: 0xff0000 } );
+    this.cube = new THREE.Mesh( this.geometry, this.material );
+    this.scene.add( this.cube );
     this.renderer = new THREE.CanvasRenderer();
-    this.renderer.setSize(this.w, this.h);
+    this.renderer.setSize( this.w, this.h );
 
     this.camera_start.z = 300;
     this.camera.position = this.camera_start;
-    this.renderer.render(this.scene, this.camera);
+    this.renderer.render( this.scene, this.camera );
 
-    document.getElementById('perspective').appendChild(this.container);
-    this.container.appendChild(this.renderer.domElement);
+    document.getElementById( 'perspective' ).appendChild( this.container );
+    this.container.appendChild( this.renderer.domElement );
 
 
   }
 
-  animate(params: Object): void {
+  animate( params: Object ): void {
 
-    requestAnimationFrame(() => this.animate(params));
-    this.scene.add(this.cube);
-    this.camera.lookAt(this.cube.position);
-    this.renderer.render(this.scene, this.camera);
-    document.querySelector('#perspective_stats').innerHTML = this.cube.position.x.toString();
+    requestAnimationFrame( () => this.animate( params ));
+    this.scene.add( this.cube );
+    this.camera.lookAt( this.cube.position );
+    this.renderer.render( this.scene, this.camera );
+    document.querySelector( '#perspective_stats' ).innerHTML = this.cube.position.x.toString();
   }
 
 }
