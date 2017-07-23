@@ -1,5 +1,5 @@
 {
-  "name": "gulp.pug",
+  "name": "THREE.js",
   "version": "1.0.0",
   "description": "Gulp, SASS + Pug Templates",
   "main": "Gulpfile.js",
@@ -21,6 +21,7 @@
     "browser-sync": "^2.17.5",
     "eslint": "^3.19.0",
     "eslint-config-airbnb": "^15.0.2",
+    "eslint-config-mdcs": "^4.2.2",
     "eslint-plugin-import": "^2.7.0",
     "eslint-plugin-jsx-a11y": "^5.1.1",
     "eslint-plugin-react": "^7.1.0",
@@ -37,6 +38,7 @@
     "typescript-eslint-parser": "^4.0.0"
   },
   "dependencies": {
-    "bootstrap-sass": "^3.3.7"
+    "bootstrap-sass": "^3.3.7",
+    "three": "^0.86.0"
   }
 }
