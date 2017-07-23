@@ -1,5 +1,5 @@
-import {Acceleration} from './Acceleration';
-import {Scene} from './Scene';
+import './Acceleration';
+import './Scene';
 
 const log = console.log;
 let acc = new Acceleration();
