@@ -4,7 +4,8 @@
     "target": "es5",
     "noImplicitAny": false,
     "sourceMap": false,
-    "declaration": true
+    "declaration": true,
+    "lib": [ "es2015", "dom" ]
   },
   "typeRoots": [
     "./typings/globals/"
@@ -18,8 +19,6 @@
     "./app/js/"
   ],
   "exclude": [
-    "./node_modules/",
-    "./typings/globals/",
     "./typings/index.d.ts"
   ],
   "files": [
