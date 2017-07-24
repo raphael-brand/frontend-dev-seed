@@ -13,14 +13,16 @@ interface ArrayConstructor {
   from(arrayLike: any, mapFn?, thisArg?): Array<any>;
 }
 
-interface TargetElement extends EventTarget {
+class TargetElement implements EventTarget {
+  addEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void {}
+  dispatchEvent(evt: Event): boolean {return true}
+  removeEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void {}
   className: string;
 }
 
 interface IAcceleration {
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
-  codes: Object;
   fieldSize: number;
   size: number;
   playerPosition: any;
@@ -29,13 +31,16 @@ interface IAcceleration {
   wall: number;
   player: number;
   level: number[][];
-  onMoveCallback: any;
+  onMoveCallback: Function;
 
   // map view
   toggleView: boolean;
 
+  getInstance() : Acceleration
+  getCode(x:number):string;
   move(direction: string): boolean;
   getPosition(): any;
+  onKeyDown(e: KeyboardEvent, callback:Function);
   setCanvas(canvas: Element): void;
   setLevel(map: number[][]): void;
   onMove(callback: Function): void;
@@ -63,17 +68,16 @@ interface IAcceleration {
  */
 
 class BaseAcceleration implements IAcceleration {
-  onMoveCallback: any;
+  onMoveCallback: Function;
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
-  codes: Object;
   fieldSize: number;
   playerPosition: PlayerPosition;
   playerAt: PlayerPosition;
 
   level: number[][];
   size:number;
-  onMoveCallBack: any;
+  onMoveCallBack: Function;
 
   free: number;
   wall: number;
@@ -82,8 +86,11 @@ class BaseAcceleration implements IAcceleration {
   // map view
   toggleView: boolean;
 
+  getInstance() : any {return this}
+  getCode(x:number):string {return ''}
   move(direction:string) : boolean { return true }
   getPosition() : any {}
+  onKeyDown(e: KeyboardEvent, obj: Function) {}
   setCanvas(canvas: Element): void {};
   setLevel(map: number[][]): void {};
   onMove(callback: Function): void {};
@@ -98,13 +105,13 @@ class Acceleration extends BaseAcceleration {
   //PlayerPosition: PlayerPosition;
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
-  codes: Object;
+  private codes: Object;
   fieldSize: number;
   playerPosition: PlayerPosition;
   playerAt: PlayerPosition;
 
   level: number[][];
-  onMoveCallBack: any;
+  onMoveCallBack: Function;
 
   free: number;
   wall: number;
@@ -112,6 +119,7 @@ class Acceleration extends BaseAcceleration {
 
   // map view
   toggleView: boolean;
+  
 
   constructor() {
     super();
@@ -124,9 +132,10 @@ class Acceleration extends BaseAcceleration {
     this.free = 0;
     this.wall = 1;
     this.player = 2;
+    
 
 
-    this.codes = Object.create(null);
+    this.codes = new Object();
     this.codes["38"] = "up";
     this.codes["40"] = "down";
     this.codes["37"] = "left";
@@ -139,7 +148,7 @@ class Acceleration extends BaseAcceleration {
       return el.addEventListener("click", this.onKeyDown, false);
     });
 
-    window.addEventListener("keydown", this.onKeyDown);
+    window.addEventListener("keydown", this.onKeyDown, false);
 
 
     // map view
@@ -167,6 +176,11 @@ class Acceleration extends BaseAcceleration {
     // return this;
   }
 
+  getInstance() : Acceleration { return this; }
+  getCode (x:number):string {
+      return this.codes[x.toString()]
+  }
+
   draw() {
     this.ctx.fillStyle = "darkgray";
     this.ctx.fillRect(0, 0, this.size, this.size);
@@ -184,10 +198,18 @@ class Acceleration extends BaseAcceleration {
     return this.playerAt ? pos : this.playerPosition
   }
 
-  onKeyDown(e: KeyboardEvent) {
-    let target: TargetElement = <TargetElement>e.target;
-    console.dir(e);
-    var code = this.codes[e.keyCode.toString()] ? this.codes[e.keyCode.toString()] : target.className;
+  onKeyDown(e:any) {
+    let retObj = {
+      handleEvent: this.onMoveCallBack
+    }
+    console.group()
+    console.log(e);
+    console.log(this.codes);
+    console.log(e.which);
+    console.log(String(e.which));
+    console.log(this.getInstance());
+    console.groupEnd();
+    var code = this.getInstance().getCode(e.which) ? this.getInstance().getCode(e.which) : e.target.className;
     this.move(code) && this.draw() && setTimeout(function () {
 
       Array.from(document.querySelectorAll(".btnWrap button")).forEach(function (el) {
@@ -200,6 +222,7 @@ class Acceleration extends BaseAcceleration {
         //return document.querySelector('.' + code).blur();
         return true;
     }, 400);
+    return retObj;
   }
 
 
