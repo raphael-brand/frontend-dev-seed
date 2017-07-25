@@ -13,7 +13,10 @@ interface ArrayConstructor {
   from(arrayLike: any, mapFn?, thisArg?): Array<any>;
 }
 
-interface TargetElement extends EventTarget {
+declare class TargetElement implements EventTarget {
+  addEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+  dispatchEvent(evt: Event): boolean
+  removeEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
   className: string;
 }
 
@@ -184,10 +187,18 @@ class Acceleration extends BaseAcceleration {
     return this.playerAt ? pos : this.playerPosition
   }
 
-  onKeyDown(e: KeyboardEvent) {
-    let target: TargetElement = <TargetElement>e.target;
-    console.dir(e);
-    var code = this.codes[e.keyCode.toString()] ? this.codes[e.keyCode.toString()] : target.className;
+  onKeyDown(e:any) {
+    let retObj = {
+      handleEvent: this.onMoveCallBack
+    }
+    console.group()
+    console.log(e);
+    console.log(this.codes);
+    console.log(e.which);
+    console.log(String(e.which));
+    //console.log(this.getInstance());
+    console.groupEnd();
+    var code = e.which ? e.which : e.target.className;
     this.move(code) && this.draw() && setTimeout(function () {
 
       Array.from(document.querySelectorAll(".btnWrap button")).forEach(function (el) {
