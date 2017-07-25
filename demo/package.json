@@ -1,5 +1,5 @@
 {
-  "name": "THREE.js",
+  "name": "exploring-typescript-and-three.js",
   "version": "1.0.0",
   "description": "Gulp, SASS + Pug Templates",
   "main": "Gulpfile.js",
@@ -31,6 +31,7 @@
     "gulp-pug": "^3.1.0",
     "gulp-rename": "^1.2.2",
     "gulp-sass": "^2.3.2",
+    "gulp-typescript": "^3.2.1",
     "gulp-uglify": "^3.0.0",
     "nodemon": "^1.11.0",
     "requirejs": "^2.3.3",

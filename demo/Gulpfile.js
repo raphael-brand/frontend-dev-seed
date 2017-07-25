@@ -7,6 +7,7 @@ var pug = require('gulp-pug');
 var uglifyjs = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
+var ts = require('gulp-typescript');
 
 /**
  * Compile pug files into HTML
@@ -81,14 +82,31 @@ gulp.task('js', function () {
 });
 
 gulp.task('vendor-scripts', ['templates', 'js-vendor'], reload);
+gulp.task('js-watch', ['scripts', 'js'], reload);
+gulp.task('scripts', function () {
+    return gulp.src([
+      'app/js/Acceleration.ts',
+      'app/js/Scene.ts',
+      'app/js/App.ts',
+    ])
+        .pipe(ts({
+            module: "es2015",
+            target: "es5",
+            noImplicitAny: false,
+            sourceMap: false,
+            declaration: false,
+            lib: [ "es2015", "dom" ]
+        }))
+        .pipe(gulp.dest('./app/js/'));
+});
 
 /**
  * Serve and watch the scss/pug files for changes
  */
-gulp.task('default', ['sass', 'js', 'templates'], function () {
+gulp.task('default', ['sass', 'js-watch', 'templates'], function () {
 
   browserSync(bsConfig);
-  gulp.watch('./app/js/*.js', ['js']);
-  gulp.watch('./app/sass/*.sass', ['sass']);
-  gulp.watch('./app/*.pug', ['pug-watch']);
+  gulp.watch('./app/js/*.ts', ['js-watch'], reload);
+  gulp.watch('./app/sass/*.sass', ['sass'], reload);
+  gulp.watch('./app/*.pug', ['pug-watch'], reload);
 });
