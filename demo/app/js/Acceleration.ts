@@ -13,10 +13,10 @@ interface ArrayConstructor {
   from(arrayLike: any, mapFn?, thisArg?): Array<any>;
 }
 
-class TargetElement implements EventTarget {
-  addEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void {}
-  dispatchEvent(evt: Event): boolean {return true}
-  removeEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void {}
+declare class TargetElement implements EventTarget {
+  addEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | AddEventListenerOptions): void
+  dispatchEvent(evt: Event): boolean
+  removeEventListener(type: string, listener?: EventListenerOrEventListenerObject, options?: boolean | EventListenerOptions): void
   className: string;
 }
 
@@ -207,9 +207,9 @@ class Acceleration extends BaseAcceleration {
     console.log(this.codes);
     console.log(e.which);
     console.log(String(e.which));
-    console.log(this.getInstance());
+    //console.log(this.getInstance());
     console.groupEnd();
-    var code = this.getInstance().getCode(e.which) ? this.getInstance().getCode(e.which) : e.target.className;
+    var code = e.which ? e.which : e.target.className;
     this.move(code) && this.draw() && setTimeout(function () {
 
       Array.from(document.querySelectorAll(".btnWrap button")).forEach(function (el) {
