@@ -5,7 +5,7 @@
   "main": "Gulpfile.js",
   "private": true,
   "scripts": {
-    "start": "npm run check-vendor && npm run vendor && gulp",
+    "start": "npm run check-vendor && gulp",
     "check-vendor": "test -d node_modules || (npm install) || (echo 'npm not installed. Please run \"npm install -g npm\"' && exit 1)",
     "vendor": "gulp vendor-scripts",
     "css": "gulp sass",
