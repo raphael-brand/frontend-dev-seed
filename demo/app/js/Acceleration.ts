@@ -37,7 +37,7 @@ interface IAcceleration {
   toggleView: boolean;
 
   getInstance() : Acceleration
-  getCode(x:number):string;
+  getCode(x:any):any;
   move(direction: string): boolean;
   getPosition(): any;
   onKeyDown(e: KeyboardEvent, callback:Function);
@@ -87,7 +87,7 @@ class BaseAcceleration implements IAcceleration {
   toggleView: boolean;
 
   getInstance() : any {return this}
-  getCode(x:number):string {return ''}
+  getCode(x:any):any {return ''}
   move(direction:string) : boolean { return true }
   getPosition() : any {}
   onKeyDown(e: KeyboardEvent, obj: Function) {}
@@ -105,7 +105,6 @@ class Acceleration extends BaseAcceleration {
   //PlayerPosition: PlayerPosition;
   canvas: HTMLCanvasElement;
   ctx: CanvasRenderingContext2D;
-  private codes: Object;
   fieldSize: number;
   playerPosition: PlayerPosition;
   playerAt: PlayerPosition;
@@ -133,14 +132,6 @@ class Acceleration extends BaseAcceleration {
     this.wall = 1;
     this.player = 2;
     
-
-
-    this.codes = new Object();
-    this.codes["38"] = "up";
-    this.codes["40"] = "down";
-    this.codes["37"] = "left";
-    this.codes["39"] = "right";
-
     this.playerAt = this.playerPosition;
 
     Array.from(document.querySelectorAll("button")).forEach(function (el) {
@@ -177,8 +168,13 @@ class Acceleration extends BaseAcceleration {
   }
 
   getInstance() : Acceleration { return this; }
-  getCode (x:number):string {
-      return this.codes[x.toString()]
+  getCode (x:any):any {
+    let codes = new Object();
+    codes["38"] = "up";
+    codes["40"] = "down";
+    codes["37"] = "left";
+    codes["39"] = "right";
+    return codes[x.toString()]
   }
 
   draw() {
@@ -202,14 +198,8 @@ class Acceleration extends BaseAcceleration {
     let retObj = {
       handleEvent: this.onMoveCallBack
     }
-    console.group()
-    console.log(e);
-    console.log(this.codes);
-    console.log(e.which);
-    console.log(String(e.which));
-    //console.log(this.getInstance());
-    console.groupEnd();
-    var code = e.which ? e.which : e.target.className;
+    var code = this.getCode(e.keyCode) ? this.getCode(e.keyCode) : e.target.className;
+    console.log('>>>', code );
     this.move(code) && this.draw() && setTimeout(function () {
 
       Array.from(document.querySelectorAll(".btnWrap button")).forEach(function (el) {
