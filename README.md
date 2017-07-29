@@ -6,6 +6,7 @@
   git clone https://github.com/raphael-brand/frontend-dev-seed.git your-directory-name
   cd your-directory-name/demo
   typings install # type definitions for THREE.js
+  gulp js-vendor # install require.js
   npm start #start the app
 ```
 ### start coding
