@@ -1,4 +1,5 @@
 {
-  "browser": ["google chrome"],
-  "server": "./dist"
+  "browser": ["chrome"],
+  "server": "./dist",
+  "open": false
 }

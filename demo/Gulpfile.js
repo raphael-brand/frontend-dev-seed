@@ -59,8 +59,7 @@ gulp.task('js-vendor', function () {
   }
   vendorConfig.js.src.map((value) => {
     console.log('Building', value, '...');
-    let suffix = ''
-    suffix = (!/\.min/.test(value) ? '.min' : '');
+    var suffix = (!/\.min/.test(value) ? '.min' : '');
     
     gulp.src(value)
       .pipe(uglifyjs({ output: { comments: /^!|@preserve|@?license|@cc_on/i } }))
