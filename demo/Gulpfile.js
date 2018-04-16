@@ -79,7 +79,7 @@ gulp.task('js', function () {
     .pipe(reload({ stream: true }))
 });
 
-gulp.task('vendor-scripts', ['templates', 'js-vendor'], reload);
+gulp.task('vendor-scripts', ['js-vendor'], reload);
 
 /**
  * Serve and watch the scss/pug files for changes

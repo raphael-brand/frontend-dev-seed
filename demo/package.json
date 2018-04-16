@@ -6,7 +6,7 @@
   "private": true,
   "scripts": {
     "start": "npm run check-vendor && gulp",
-    "check-vendor": "test -d node_modules || (npm install) || (echo 'npm not installed. Please run \"npm install -g npm\"' && exit 1)",
+    "check-vendor": "test -d ./node_modules && npm run vendor || (npm install && gulp vendor-scripts) || (echo 'npm not installed. Please run \"npm install -g npm\"' && exit 1)",
     "vendor": "gulp vendor-scripts",
     "css": "gulp sass",
     "js": "gulp js",
