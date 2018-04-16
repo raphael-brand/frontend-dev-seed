@@ -3,34 +3,30 @@ define('test-module', function() {
     test: () => {return 'this is a test'}
   }
 });
-define('animation', function(test) {
-  var createAnimatedText = function(querySelector, staggerInterval) {
-    var target = document.querySelector(querySelector);
-    var chars = target.innerText.split('');
-    div = document.createElement('div');
-    div.classList.add('animated');
-    target.innerHTML = '';
-    var i = staggerInterval;
-    for(var c=0; c<chars.length; c++) {
-      div = div.cloneNode()
-      if(chars[c] == ' ') chars[c] = '&nbsp;'
-      div.innerHTML = chars[c];
-      target.appendChild(div)
-      setTimeout((id) => {
-       Array.from(document.querySelectorAll('.animated'))[id].classList.add('animating');
-      }
-      , i, c);
-      i += staggerInterval; 
+define('palindrome', function() {
+    return function(fn) {
+        fetch('files/palindromes.txt').then(response => {
+            response.text().then(fn);
+        });
     }
-
-  };
-  return {
-    animateText: createAnimatedText
-  }
 });
+
 const log = console.log;
 
 log('Hello Bootstrap');
-require(['animation'], function(console) {
-  log(console.animateText('.animation', 150));
+require(['palindrome'], function (palindrome) {
+  palindrome((result) => {
+    res = result.split("\n");
+    // console.log(res);
+    for(let textline of res) {
+      let buffer = textline.replace(/[^a-z]*/gi,'');
+      if(buffer.length % 2 == 1) {
+        // if palindrome possible found
+        if(buffer[1].toLowerCase() === buffer[buffer.length-2].toLowerCase())
+          console.log(textline)
+      }
+      else
+          console.log(' >', textline);
+    }
+  })
 });
