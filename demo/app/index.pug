@@ -1,6 +1,7 @@
 html
     head
-        title Welcome Gamers ...
+        title 
+        link(href='https://fonts.googleapis.com/css?family=Titillium+Web:700', rel='stylesheet')
         link(href='/css/bootstrap.min.css', rel='stylesheet')
         link(href='/css/main.css', rel='stylesheet')
         script(type='text/javascript', data-main='js/main', src='js/vendor/require.min.js')
@@ -8,16 +9,15 @@ html
         .container-fluid
             .row
                 .col-md-12
-                    nav.navbar.d-block.navbar-expand-lg.navbar-light.bg-light
+                    nav.navbar.d-block.navbar-expand-lg.navbar-light
                         a.navbar-brand.col-md-3.d-xs-block(href='#')
                             img.float-left(alt='Exozet', src='/img/exozet_logo.png')
                         //button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo02', aria-controls='navbarTogglerDemo02', aria-expanded='false', aria-label='Toggle navigation')
                         //span.navbar-toggler-icon
                         #navBar.col-md-5.d-block.d-lg-inline.d-md-inline.float-md-right.collapse.navbar-collapse
-                            ul.navbar-nav.list-unstyled.p-15.d-md-inline
+                            ul.navbar-nav.list-unstyled.d-md-inline
                                 li.nav-item.active.d-md-inline.float-md-left
-                                    a.nav-link.pl-2(href='#')
-                                    | News 
+                                    a.nav-link.pl-2(href='#') News
                                     span.sr-only (current)
                                 li.nav-item.d-md-inline.float-md-left
                                     a.nav-link.pl-2(href='#') Kontakt
