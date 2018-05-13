@@ -1,12 +1,23 @@
+
+'use strict';
+
 var gulp = require('gulp');
-var browserSync = require('browser-sync');
-var reload = browserSync.reload;
 var bsConfig = require('./bs-config.json');
 var sass = require('gulp-sass');
 var pug = require('gulp-pug');
 var uglifyjs = require('gulp-uglify');
 var rename = require('gulp-rename');
 var concat = require('gulp-concat');
+
+
+var gulpLoadPlugins = require('gulp-load-plugins');
+var _gulpLoadPlugins2 = _interopRequireDefault(gulpLoadPlugins);
+var del = require('del');
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+var gutil = require('gulp-util');
+var browserSync = require('browser-sync');
+var reload = browserSync.reload;
+var $ = (0, _gulpLoadPlugins2.default)();
 
 /**
  * Compile pug files into HTML
@@ -33,9 +44,16 @@ gulp.task('pug-watch', ['templates'], reload);
 gulp.task('css-vendor', function () {
   console.log('bootstrap not used ...');
   return gulp.src([
-    'node_modules/bootstrap-sass/assets/stylesheets/_bootstrap.scss'
+    'node_modules/bootstrap-xxl/scss/bootstrap.scss'
   ])
-    .pipe(sass()).on('error', sass.logError)
+    .pipe($.plumber())
+    .pipe($.sourcemaps.init())
+    .pipe($.sass().on('error', $.sass.logError))
+    //.pipe($.sourcemaps.write('.'))
+    .pipe($.autoprefixer({browsers: ['last 1 version']}))
+    .pipe($.rename({ suffix: '.min' }))
+    .pipe(gulp.dest('./dist/css'))
+    .pipe($.minifyCss())
     .pipe(gulp.dest('./dist/css'))
     .pipe(reload({ stream: true }));
 });
