@@ -1,6 +1,20 @@
-$spacer: 20px
+@import '../../node_modules/bootstrap-xxl/scss/mixins'
+$spacer: 20px;
+
+$grid-breakpoints: (sm: 480px, md: 768px, lg: 1024px);
 
 .pl-2
   padding-left: ($spacer * .5) !important;
 .p-15
   padding: ($spacer * .75) !important;
+
+/*.css-helper
+  @include media-breakpoint-up(sm, $grid-breakpoints)
+    background-color: #333;
+    color: #fff;
+  @include media-breakpoint-up(md, $grid-breakpoints)
+    background-color: #666;
+    color: #fff;
+  @include media-breakpoint-up(lg, $grid-breakpoints)
+    background-color: #888;
+    color: #fff;

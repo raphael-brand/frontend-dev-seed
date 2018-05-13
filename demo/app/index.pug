@@ -4,24 +4,24 @@ html
         link(href='/css/bootstrap.min.css', rel='stylesheet')
         link(href='/css/main.css', rel='stylesheet')
         script(type='text/javascript', data-main='js/main', src='js/vendor/require.min.js')
-    body
+    body.css-helper
         .container-fluid
             .row
                 .col-md-12
-                    nav.navbar.navbar-expand-lg.navbar-light.bg-light
-                        a.navbar-brand(href='#')
+                    nav.navbar.d-block.navbar-expand-lg.navbar-light.bg-light
+                        a.navbar-brand.col-md-3.d-xs-block(href='#')
                             img.float-left(alt='Exozet', src='/img/exozet_logo.png')
                         //button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo02', aria-controls='navbarTogglerDemo02', aria-expanded='false', aria-label='Toggle navigation')
                         //span.navbar-toggler-icon
-                        #navBar.collapse.navbar-collapse.pull-right
-                            ul.navbar-nav.list-unstyled.p-15
-                                li.nav-item.active
+                        #navBar.col-md-5.d-block.d-lg-inline.d-md-inline.float-md-right.collapse.navbar-collapse
+                            ul.navbar-nav.list-unstyled.p-15.d-md-inline
+                                li.nav-item.active.d-md-inline.float-md-left
                                     a.nav-link.pl-2(href='#')
                                     | News 
                                     span.sr-only (current)
-                                li.nav-item
+                                li.nav-item.d-md-inline.float-md-left
                                     a.nav-link.pl-2(href='#') Kontakt
-                                li.nav-item
+                                li.nav-item.d-md-inline.float-md-left
                                     a.nav-link.pl-2(href='#') Impressum
             .row
                 .col-md-12
