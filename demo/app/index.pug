@@ -1,10 +1,111 @@
 html
     head
         title Welcome Gamers ...
-        //link(href='/css/bootstrap.css', rel='stylesheet')
+        link(href='/css/bootstrap.css', rel='stylesheet')
         link(href='/css/main.css', rel='stylesheet')
         script(type='text/javascript', data-main='js/main', src='js/vendor/require.min.js')
     body
-        .container
-          .jumbotron
-            .heading1.animation Hello World!
+        .container-fluid
+            .row
+                .col-md-12
+                    nav.navbar.navbar-expand-lg.navbar-light.bg-light
+                        a.navbar-brand(href='#')
+                            img.float-left(alt='Exozet', src='/img/exozet_logo.png')
+                        //button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo02', aria-controls='navbarTogglerDemo02', aria-expanded='false', aria-label='Toggle navigation')
+                        //span.navbar-toggler-icon
+                        #navBar.collapse.navbar-collapse.pull-right
+                            ul.navbar-nav.list-unstyled.p-15
+                                li.nav-item.active
+                                    a.nav-link.pl-2(href='#')
+                                    | News 
+                                    span.sr-only (current)
+                                li.nav-item
+                                    a.nav-link.pl-2(href='#') Kontakt
+                                li.nav-item
+                                    a.nav-link.pl-2(href='#') Impressum
+            .row
+                .col-md-12
+                    span.badge.badge-default Label
+            .row
+                .col-md-8
+                    h2
+                    | Heading
+                    p
+                    | Donec id elit non mi porta gravida at eget metus. Fusce dapibus, tellus ac cursus commodo, tortor mauris condimentum nibh, ut fermentum massa justo sit amet risus. Etiam porta sem malesuada magna mollis euismod. Donec sed odio dui.
+                    p
+                        a.btn(href='#') View details »
+                .col-md-4
+                    h3
+                    | h3. Lorem ipsum dolor sit amet.
+                    ul
+                        li.list-item
+                        | Lorem ipsum dolor sit amet
+                        li.list-item
+                        | Consectetur adipiscing elit
+                        li.list-item
+                        | Integer molestie lorem at massa
+                        li.list-item
+                        | Facilisis in pretium nisl aliquet
+                        li.list-item
+                        | Nulla volutpat aliquam velit
+                        li.list-item
+                        | Faucibus porta lacus fringilla vel
+                        li.list-item
+                        | Aenean sit amet erat nunc
+                        li.list-item
+                        | Eget porttitor lorem
+            .row
+                .col-md-8
+                    h3
+                    | h3. Lorem ipsum dolor sit amet.
+                    form(role='form')
+                        .form-group
+                        label(for='exampleInputEmail1')
+                            | Email address
+                        input#exampleInputEmail1.form-control(type='email')
+                        .form-group
+                        label(for='exampleInputPassword1')
+                            | Password
+                        input#exampleInputPassword1.form-control(type='password')
+                        .form-group
+                        label(for='exampleInputFile')
+                            | File input
+                        input#exampleInputFile.form-control-file(type='file')
+                        p.help-block
+                            | Example block-level help text here.
+                        .checkbox
+                        label
+                            input(type='checkbox')
+                            |  Check me out
+                        button.btn.btn-primary(type='submit')
+                        | Submit
+                .col-md-4
+                    .row
+                        .col-md-8
+                    ul
+                        li.list-item
+                        | Lorem ipsum dolor sit amet
+                        li.list-item
+                        | Consectetur adipiscing elit
+                        li.list-item
+                        | Integer molestie lorem at massa
+                        li.list-item
+                        | Facilisis in pretium nisl aliquet
+                        li.list-item
+                        | Nulla volutpat aliquam velit
+                        li.list-item
+                        | Faucibus porta lacus fringilla vel
+                        li.list-item
+                        | Aenean sit amet erat nunc
+                        li.list-item
+                        | Eget porttitor lorem
+                .col-md-4
+                    p
+                    | Lorem ipsum dolor sit amet, 
+                    strong consectetur adipiscing elit
+                    | . Aliquam eget sapien sapien. Curabitur in metus urna. In hac habitasse platea dictumst. Phasellus eu sem sapien, sed vestibulum velit. Nam purus nibh, lacinia non faucibus et, pharetra in dolor. Sed iaculis posuere diam ut cursus. 
+                    em
+                    | Morbi commodo sodales nisi id sodales. Proin consectetur, nisi id commodo imperdiet, metus nunc consequat lectus, id bibendum diam velit et dui.
+                    |  Proin massa magna, vulputate nec bibendum nec, posuere nec lacus. 
+                    small
+                    | Aliquam mi erat, aliquam vel luctus eu, pharetra quis elit. Nulla euismod ultrices massa, et feugiat ipsum consequat eu.
