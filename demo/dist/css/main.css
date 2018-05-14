@@ -1,39 +1,25 @@
-div.animated {
-  display: inline;
-  float: left;
-  opacity: 0;
-  transition: opacity 200ms; }
+.pl-2 {
+  margin: 10px !important; }
 
-div.animated.animating {
-  opacity: 1;
-  color: #ff0; }
+#navBar li a {
+  font-size: 100%;
+  font-weight: 500;
+  text-decoration: none;
+  text-transform: uppercase; }
 
-.heading1 {
-  animation: animateHeading 1s 50ms infinite; }
+#navBar li.active a {
+  background-color: #e6e6e6;
+  border-radius: 5%;
+  text-shadow: 1px 1px rgba(102, 102, 102, 0.5);
+  border: 2px solid rgba(153, 153, 153, 0.5); }
 
-@keyframes animateHeading {
-  from, to {
-    text-shadow: #000 1px 1px 2px; }
-  20%, 80% {
-    text-shadow: #bbb 1px 1px 2px; } }
-
-body {
-  font-family: monospace;
-  font-size: 20px; }
-
-.jumbotron {
-  background-color: #000025;
-  margin-top: 2em;
-  height: 8.7em;
-  box-shadow: darkgray 0 2px 2px;
-  position: relative; }
-
-.heading1 {
-  position: absolute;
-  bottom: 0;
-  padding: 10px;
-  left: 0;
-  font-size: 1em;
-  line-height: 0.8em;
-  color: #000025;
-  text-shadow: none; }
+/*.css-helper
+  @include media-breakpoint-up(sm, $grid-breakpoints)
+    background-color: #333;
+    color: #fff;
+  @include media-breakpoint-up(md, $grid-breakpoints)
+    background-color: #666;
+    color: #fff;
+  @include media-breakpoint-up(lg, $grid-breakpoints)
+    background-color: #888;
+    color: #fff; */
