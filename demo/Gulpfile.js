@@ -67,6 +67,7 @@ gulp.task('sass', function () {
 });
 
 gulp.task('sass-watch', ['sass'], reload);
+gulp.task('js-watch', ['js'], reload);
 
 gulp.task('js-vendor', function () {
 
@@ -88,8 +89,7 @@ gulp.task('js-vendor', function () {
 
 gulp.task('js', function () {
   return gulp.src([
-    'app/js/test-module.js',
-    'app/js/animation.js',
+    'app/js/contact-form.js',
     'app/js/main.js']
   )
     .pipe(concat('main.js'))

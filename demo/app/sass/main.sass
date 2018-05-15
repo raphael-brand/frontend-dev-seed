@@ -32,3 +32,13 @@ $grid-breakpoints: (sm: 480px, md: 768px, lg: 1024px);
   @include media-breakpoint-up(lg, $grid-breakpoints)
     background-color: #888;
     color: #fff;
+
+
+p.text-danger.in
+  animation: fade 300ms linear;
+
+@keyframes fade
+  0%
+    opacity: 0
+  100%
+    opacity: 1

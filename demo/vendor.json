@@ -1,7 +1,8 @@
 {
   "js": {
     "src": [
-      "node_modules/requirejs/require.js"
+      "node_modules/requirejs/require.js",
+      "node_modules/jquery/dist/jquery.min.js"
   ],
     "dest": "./dist/js/vendor"
   },

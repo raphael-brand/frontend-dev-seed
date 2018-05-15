@@ -42,7 +42,7 @@
     "gulp-sourcemaps": "^2.6.4",
     "gulp-uglify": "^3.0.0",
     "gulp-util": "^3.0.8",
-    "jquery": "^1.9.1",
+    "jquery": "^1.12.4",
     "minimatch": "^3.0.4",
     "popper.js": "^1.14.3",
     "requirejs": "^2.3.5",
