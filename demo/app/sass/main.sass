@@ -34,11 +34,19 @@ $grid-breakpoints: (sm: 480px, md: 768px, lg: 1024px);
     color: #fff;
 
 
-p.text-danger.in
-  animation: fade 300ms linear;
+p.form-error-text
+  &.in
+    animation: fadeIn 300ms linear;
+  &.out
+    animation: fadeOut 300ms linear;
 
-@keyframes fade
+@keyframes fadeIn
   0%
     opacity: 0
   100%
     opacity: 1
+@keyframes fadeOut
+  0%
+    opacity: 1
+  100%
+    opacity: 0
