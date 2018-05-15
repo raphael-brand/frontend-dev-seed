@@ -1,0 +1,17 @@
+blockquote
+    font-family: 'Merriweather', serif;
+h1, h2, h3
+    font-family: 'Titillium Web', sans-serif;
+    font-weight: bold;
+
+blockquote
+    p
+        display: inline
+    p::before
+        content: "\201C";
+    p::after
+        content: "\201D"
+blockquote
+    cite::before
+        content: "\2014 \2009";
+
