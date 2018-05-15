@@ -28,7 +28,7 @@ html
                     span.badge.badge-default Label
             .row
                 .col-md-8
-                    h2 Long Headline Text
+                    h2 Long Headline Text /
                     p Es gibt im Moment in diese Mannschaft, oh, einige Spieler vergessen ihnen Profi was sie sind. Ich lese nicht sehr viele Zeitungen, aber ich habe gehört viele Situationen. Erstens: wir haben nicht offensiv gespielt. Es gibt keine deutsche Mannschaft spielt offensiv und die Name offensiv wie Bayern.
                     p Letzte Spiel hatten wir in Platz drei Spitzen: Elber, Jancka und dann Zickler. Wir müssen nicht vergessen Zickler. Zickler ist eine Spitzen mehr, Mehmet eh mehr Basler. Ist klar diese Wörter, ist möglich verstehen, was ich hab gesagt? Danke.
                     blockquote.p-5.text-center
@@ -66,29 +66,30 @@ html
                         | Eget porttitor lorem
             .row
                 .col-md-8
-                    h3
-                    | h3. Lorem ipsum dolor sit amet.
-                    form(role='form')
-                        .form-group
-                        label(for='exampleInputEmail1')
-                            | Email address
-                        input#exampleInputEmail1.form-control(type='email')
-                        .form-group
-                        label(for='exampleInputPassword1')
-                            | Password
-                        input#exampleInputPassword1.form-control(type='password')
-                        .form-group
-                        label(for='exampleInputFile')
-                            | File input
-                        input#exampleInputFile.form-control-file(type='file')
+                    h2 Formular /
+                    form(role='form',action='#')
+                        .form-group.row
+                            label.col-sm-2.col-form-label(for='inputName') Name
+                            .col-sm-10
+                                input#inputName.form-control(type='text',pattern='[^\\d]+',placeholder='Ihr Name')
+                        .form-group.row
+                            label.col-sm-2.col-form-label(for='inputEmail') E-Mail
+                            .col-sm-10
+                                input#inputEmail.form-control(type='email',placeholder='me@example.com')
+                        .form-group.row
+                            label.col-sm-2.col-form-label(for='inputPhone') Telefon
+                            .col-sm-10
+                                input#inputPhone.form-control(type='tel',placeholder='+49 123 45 678')
+                        .form-group.row
+                            label.col-sm-2.col-form-label(for='inputComment') Kommentar
+                            .col-sm-10
+                                textarea#inputComment.form-control(placeholder='Ihr Kommentar')
+                        .form-group.row
+                            .col-sm-10.offset-sm-2
+                                input.float-sm-right.btn.btn-primary(type='submit',onsubmit='return false;',value='Abschicken')
+                        
                         p.help-block
                             | Example block-level help text here.
-                        .checkbox
-                        label
-                            input(type='checkbox')
-                            |  Check me out
-                        button.btn.btn-primary(type='submit')
-                        | Submit
                 .col-md-4
                     .row
                         .col-md-8
@@ -99,16 +100,10 @@ html
                         | Consectetur adipiscing elit
                         li.list-item
                         | Integer molestie lorem at massa
-                        li.list-item
-                        | Facilisis in pretium nisl aliquet
-                        li.list-item
-                        | Nulla volutpat aliquam velit
-                        li.list-item
-                        | Faucibus porta lacus fringilla vel
-                        li.list-item
-                        | Aenean sit amet erat nunc
-                        li.list-item
-                        | Eget porttitor lorem
+          
+            .row
+                .col-md-8
+                    h2 Leistungsumpfang /
                 .col-md-4
                     p
                     | Lorem ipsum dolor sit amet, 
