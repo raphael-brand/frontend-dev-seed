@@ -71,27 +71,27 @@ html
                     p.text-hide.text-danger.form-error-text.out Fehlermeldung
 
                     form.needs-validation(role='form',action='#',novalidate)
-                        .form-group.row
-                            label.col-sm-2.col-form-label(for='inputName') Name
-                            .col-sm-10
+                        .form-group.required.row
+                            label.col-sm-3.col-form-label(for='inputName') Name
+                            .col-sm-9
                                 input#inputName.form-control(type='text',pattern='[^\\d]+',placeholder='Ihr Name', required)
                                 .invalid-tooltip Bitte geben Sie Ihren Namen ein
-                        .form-group.row
-                            label.col-sm-2.col-form-label(for='inputEmail') E-Mail
-                            .col-sm-10
+                        .form-group.required.row
+                            label.col-sm-3.col-form-label(for='inputEmail') E-Mail
+                            .col-sm-9
                                 input#inputEmail.form-control(type='email',placeholder='me@example.com', required)
                                 .invalid-tooltip Bitte geben Sie eine gültige E-Mail-Adresse ein 
                         .form-group.row
-                            label.col-sm-2.col-form-label(for='inputPhone') Telefon
-                            .col-sm-10
+                            label.col-sm-3.col-form-label(for='inputPhone') Telefon
+                            .col-sm-9
                                 input#inputPhone.form-control(type='tel',placeholder='+49 123 45 678')
-                        .form-group.row
-                            label.col-sm-2.col-form-label(for='inputComment') Kommentar
-                            .col-sm-10
+                        .form-group.required.row
+                            label.col-sm-3.col-form-label(for='inputComment') Kommentar
+                            .col-sm-9
                                 textarea#inputComment.form-control(placeholder='Ihr Kommentar',required)
                                 .invalid-tooltip Bitte geben Sie einen Kommentar ein
                         .form-group.row
-                            .col-sm-10.offset-sm-2
+                            .col-sm-9.offset-sm-2
                                 input.float-sm-right.btn.btn-primary(type='submit',value='Abschicken')
                 .col-md-4
                     .row

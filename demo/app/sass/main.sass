@@ -1,7 +1,9 @@
 @import '../../node_modules/bootstrap-xxl/scss/mixins'
+@import '../../node_modules/bootstrap-xxl/scss/bootstrap'
 @import 'fonts'
 
 $spacer: 20px;
+$asterisk-color: $form-feedback-invalid-color;
 
 $grid-breakpoints: (sm: 480px, md: 768px, lg: 1024px);
 
@@ -63,3 +65,8 @@ p.form-error-text
   border-color: #739324;
   border-top-color: #cedbb0;
   border-bottom-color: #546c0a;
+
+.form-group.required
+  .col-form-label::after
+    content: "\2009 *";
+    color: $asterisk-color;
