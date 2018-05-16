@@ -70,15 +70,17 @@ html
                         | Felder mit einem * sind Pflichtfelder.
                     p.text-hide.text-danger.form-error-text.out Fehlermeldung
 
-                    form(role='form',action='#')
+                    form.needs-validation(role='form',action='#',novalidate)
                         .form-group.row
                             label.col-sm-2.col-form-label(for='inputName') Name
                             .col-sm-10
-                                input#inputName.form-control(type='text',pattern='[^\\d]+',placeholder='Ihr Name')
+                                input#inputName.form-control(type='text',pattern='[^\\d]+',placeholder='Ihr Name', required)
+                                .invalid-tooltip Bitte geben Sie Ihren Namen ein
                         .form-group.row
                             label.col-sm-2.col-form-label(for='inputEmail') E-Mail
                             .col-sm-10
-                                input#inputEmail.form-control(type='email',placeholder='me@example.com')
+                                input#inputEmail.form-control(type='email',placeholder='me@example.com', required)
+                                .invalid-tooltip Bitte geben Sie eine gültige E-Mail-Adresse ein 
                         .form-group.row
                             label.col-sm-2.col-form-label(for='inputPhone') Telefon
                             .col-sm-10
@@ -86,10 +88,11 @@ html
                         .form-group.row
                             label.col-sm-2.col-form-label(for='inputComment') Kommentar
                             .col-sm-10
-                                textarea#inputComment.form-control(placeholder='Ihr Kommentar')
+                                textarea#inputComment.form-control(placeholder='Ihr Kommentar',required)
+                                .invalid-tooltip Bitte geben Sie einen Kommentar ein
                         .form-group.row
                             .col-sm-10.offset-sm-2
-                                input.float-sm-right.btn.btn-primary(type='submit',onsubmit='return false;',value='Abschicken')
+                                input.float-sm-right.btn.btn-primary(type='submit',value='Abschicken')
                 .col-md-4
                     .row
                         .col-md-8
