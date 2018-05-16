@@ -50,3 +50,16 @@ p.form-error-text
     opacity: 1
   100%
     opacity: 0
+
+// #b2c188 // button green gradient #1
+// #739324 // button green gradient #2
+// #cedbb0 // button light edge
+// #546c0a // button dark edge
+// #bcbeb9 // button shadow
+//$green_button_gradient: (start-color: #b2c188; end-color: #739324);
+.btn
+  @include gradient-y($start-color: #b2c188, $end-color: #739324, $start-percent: 0%, $end-percent: 100%);
+.btn.btn-primary
+  border-color: #739324;
+  border-top-color: #cedbb0;
+  border-bottom-color: #546c0a;
