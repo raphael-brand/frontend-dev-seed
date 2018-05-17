@@ -80,6 +80,25 @@ p.form-error-text
     content: "\2009 \002a";
     color: $asterisk-color;
 
+.link-list
+  
+  list-style-type: none;
+  padding-left: 0;
+  li.sprite.arrow
+    width: 100%;
+    position: relative;
+    line-height: 1.65em;
+    background-position-x: -11px;
+
+    a
+      padding: 0 0 0px 10px;
+      color: #739324 !important;
+      text-decoration: none;
+      bottom: 7px;
+      position: relative;
+      line-height: inherit;   
+
+
 tel, mail
   display: block;
 
@@ -88,7 +107,7 @@ tel, mail
     border-bottom: 2px solid #ddd;
   & > .row:nth-child(3)
     border-top: 2px solid #ddd;
-
+  
 address
   display: block;
   clear: both;
