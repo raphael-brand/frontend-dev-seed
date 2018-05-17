@@ -8,132 +8,134 @@ html
         script(type='text/javascript', data-main='js/main', src='js/vendor/require.min.js')
     body.css-helper
         .container-fluid
-                .row
-                    .col-md-12
-                        nav.navbar.d-block.navbar-expand-lg.navbar-light
-                            a.navbar-brand.col-md-3.d-xs-block(href='#')
-                                img.float-left(alt='Exozet', src='/img/exozet_logo.png')
-                            //button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo02', aria-controls='navbarTogglerDemo02', aria-expanded='false', aria-label='Toggle navigation')
-                            //span.navbar-toggler-icon
-                            #navBar.col-md-5.d-block.d-lg-inline.d-md-inline.float-md-right.collapse.navbar-collapse
-                                ul.navbar-nav.list-unstyled.d-md-inline
-                                    li.nav-item.active.d-md-inline.float-md-left
-                                        a.nav-link.pl-2(href='#') News
-                                        span.sr-only (current)
-                                    li.nav-item.d-md-inline.float-md-left
-                                        a.nav-link.pl-2(href='#') Kontakt
-                                    li.nav-item.d-md-inline.float-md-left
-                                        a.nav-link.pl-2(href='#') Impressum
-                .row
-                    .col-md-8
-                        // headline
-                        .row
-                            .col-md-12
-                                h2 Long Headline Text /
-                                p Es gibt im Moment in diese Mannschaft, oh, einige Spieler vergessen ihnen Profi was sie sind. Ich lese nicht sehr viele Zeitungen, aber ich habe gehört viele Situationen. Erstens: wir haben nicht offensiv gespielt. Es gibt keine deutsche Mannschaft spielt offensiv und die Name offensiv wie Bayern.
-                                p Letzte Spiel hatten wir in Platz drei Spitzen: Elber, Jancka und dann Zickler. Wir müssen nicht vergessen Zickler. Zickler ist eine Spitzen mehr, Mehmet eh mehr Basler. Ist klar diese Wörter, ist möglich verstehen, was ich hab gesagt? Danke.
-                                blockquote.p-5.text-center
-                                    hr
-                                    |
-                                    p Ein Trainer ist nicht ein Idiot! Ein Trainer sei sehen was passieren in Platz.
-                                    |
-                                    cite Trapattoni '98
-                                    |
-                                    hr
-                                .text-body
-                                    img.pr-3(style="float:left;width:267px;height:151px",src="/img/sydney-opera.png", alt="Opera in Sydney")
-                                    div Offensiv, offensiv ist wie machen wir in Platz. Zweitens: ich habe erklärt mit diese zwei Spieler: nach Dortmund brauchen vielleicht Halbzeit Pause. Ich habe auch andere Mannschaften gesehen in Europa nach diese Mittwoch. Ich habe gesehen auch zwei Tage die Training. Ein Trainer ist nicht ein Idiot! Ein Trainer sei sehen was passieren in Platz. In diese Spiel es waren zwei, drei diese Spieler waren schwach wie eine Flasche leer! Haben Sie gesehen Mittwoch, welche Mannschaft hat gespielt Mittwoch? Hat gespielt Mehmet oder gespielt Basler oder hat gespielt Trapattoni? Diese Spieler beklagen mehr als sie spielen! Wissen Sie, warum die Italienmannschaften kaufen nicht diese Spieler? Weil wir haben gesehen viele Male solche Spiel!
-                        // form
-                        .row
-                            .col-md-12
-                                h2 Formular /
+            // nav
+            .row
+                .col-md-12
+                    nav.navbar.d-block.navbar-expand-lg.navbar-light
+                        a.navbar-brand.col-md-3.d-xs-block(href='#')
+                            img.float-left(alt='Exozet', src='/img/exozet_logo.png')
+                        //button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarTogglerDemo02', aria-controls='navbarTogglerDemo02', aria-expanded='false', aria-label='Toggle navigation')
+                        //span.navbar-toggler-icon
+                        #navBar.col-md-5.d-block.d-lg-inline.d-md-inline.float-md-right.collapse.navbar-collapse
+                            ul.navbar-nav.list-unstyled.d-md-inline
+                                li.nav-item.active.d-md-inline.float-md-left
+                                    a.nav-link.pl-2(href='#') News
+                                    span.sr-only (current)
+                                li.nav-item.d-md-inline.float-md-left
+                                    a.nav-link.pl-2(href='#') Kontakt
+                                li.nav-item.d-md-inline.float-md-left
+                                    a.nav-link.pl-2(href='#') Impressum
+            // main
+            .row
+                .col-md-8
+                    // headline
+                    .row
+                        .col-md-12
+                            h2 Long Headline Text /
+                            p Es gibt im Moment in diese Mannschaft, oh, einige Spieler vergessen ihnen Profi was sie sind. Ich lese nicht sehr viele Zeitungen, aber ich habe gehört viele Situationen. Erstens: wir haben nicht offensiv gespielt. Es gibt keine deutsche Mannschaft spielt offensiv und die Name offensiv wie Bayern.
+                            p Letzte Spiel hatten wir in Platz drei Spitzen: Elber, Jancka und dann Zickler. Wir müssen nicht vergessen Zickler. Zickler ist eine Spitzen mehr, Mehmet eh mehr Basler. Ist klar diese Wörter, ist möglich verstehen, was ich hab gesagt? Danke.
+                            blockquote.p-5.text-center
                                 hr
-                                p.help-block
-                                    | Felder mit einem * sind Pflichtfelder.
-                                p.text-hide.text-danger.form-error-text.out Fehlermeldung
+                                |
+                                p Ein Trainer ist nicht ein Idiot! Ein Trainer sei sehen was passieren in Platz.
+                                |
+                                cite Trapattoni '98
+                                |
+                                hr
+                            .text-body
+                                img.pr-3(style="float:left;width:267px;height:151px",src="/img/sydney-opera.png", alt="Opera in Sydney")
+                                div Offensiv, offensiv ist wie machen wir in Platz. Zweitens: ich habe erklärt mit diese zwei Spieler: nach Dortmund brauchen vielleicht Halbzeit Pause. Ich habe auch andere Mannschaften gesehen in Europa nach diese Mittwoch. Ich habe gesehen auch zwei Tage die Training. Ein Trainer ist nicht ein Idiot! Ein Trainer sei sehen was passieren in Platz. In diese Spiel es waren zwei, drei diese Spieler waren schwach wie eine Flasche leer! Haben Sie gesehen Mittwoch, welche Mannschaft hat gespielt Mittwoch? Hat gespielt Mehmet oder gespielt Basler oder hat gespielt Trapattoni? Diese Spieler beklagen mehr als sie spielen! Wissen Sie, warum die Italienmannschaften kaufen nicht diese Spieler? Weil wir haben gesehen viele Male solche Spiel!
+                    // form
+                    .row
+                        .col-md-12
+                            h2 Formular /
+                            hr
+                            p.help-block
+                                | Felder mit einem * sind Pflichtfelder.
+                            p.text-hide.text-danger.form-error-text.out Fehlermeldung
 
-                                form.needs-validation(role='form',action='#',novalidate)
-                                    .form-group.required.row
-                                        label.col-sm-3.col-form-label(for='inputName') Name
-                                        .col-sm-9
-                                            input#inputName.form-control(type='text',pattern='[^\\d]+',placeholder='Ihr Name', required)
-                                            .invalid-tooltip Bitte geben Sie Ihren Namen ein
-                                    .form-group.required.row
-                                        label.col-sm-3.col-form-label(for='inputEmail') E-Mail
-                                        .col-sm-9
-                                            input#inputEmail.form-control(type='email',placeholder='me@example.com', required)
-                                            .invalid-tooltip Bitte geben Sie eine gültige E-Mail-Adresse ein 
-                                    .form-group.row
-                                        label.col-sm-3.col-form-label(for='inputPhone') Telefon
-                                        .col-sm-9
-                                            input#inputPhone.form-control(type='tel',placeholder='+49 123 45 678')
-                                    .form-group.required.row
-                                        label.col-sm-3.col-form-label(for='inputComment') Kommentar
-                                        .col-sm-9
-                                            textarea#inputComment.form-control(placeholder='Ihr Kommentar',required)
-                                            .invalid-tooltip Bitte geben Sie einen Kommentar ein
-                                    .form-group.row
-                                        .col-sm-9.offset-sm-3
-                                            input.float-sm-right.btn.btn-primary(type='submit',value='Abschicken')
-                        // Leistungsumpfang
-                        .row
-                            .col-md-12
-                                h2 Leistungsumpfang /
-                                hr
-                        // section list
-                        .row.section
-                            .col-md-4
-                                ol
-                                    li.list-item Lorem
-                                    li.list-item Ipsum 
-                                    li.list-item Dolor 
-                                    li.list-item Sit
-                                
-                            .col-md-4
-                                ul.list-unstyled
-                                    li Exozet: GmbH
-                                    li Mitarbeiter: ca. 150
-                                    li Groups: Games Interact, Effects
-                                    li Gründung: 1996
-                    // sidebar
-                    .col-md-3
-                        .row
-                            .col-md-12
-                                h3 Interne Linkliste
-                                hr
-                                ul
-                                    li.list-item
-                                        a(href='#') Link Nummer 1
-                                    li.list-item
-                                        a(href='#') Link Nummer 2
-                                    li.list-item
-                                        a(href='#') Link Nummer 3
-                        .row
-                            .col-md-12
-                                h3 Kontakt
-                                hr
-                                |    Exozet Berlin
-                                address Platz der Luftbrücke 4-6
-                                    br
-                                |    12101 Berlin
-                                
-                                tel +49(0)30 24 65 60-0
-                                mail info@exozet.com
-                        .row
-                            .col-md-12
-                                h3 Image Teaser
-                                hr
-                                .card
-                                    img(src="/img/image-teaser.png", alt="Es gibt im Moment in diese Mannschaft, oh, einige Spieler")
-                                    button.btn.btn-primary Mehr lesen
-                // footer
-                .row
-                    .col-md-9 &copy; Exozet 2014
-                    .col-md-3
-                        nav.navbar.navbar-light
-                            a(href="#") News
-                            | |
-                            a(href="#") Kontakt
-                            | |
-                            a(href="#") Impressum
+                            form.needs-validation(role='form',action='#',novalidate)
+                                .form-group.required.row
+                                    label.col-sm-3.col-form-label(for='inputName') Name
+                                    .col-sm-9
+                                        input#inputName.form-control(type='text',pattern='[^\\d]+',placeholder='Ihr Name', required)
+                                        .invalid-tooltip Bitte geben Sie Ihren Namen ein
+                                .form-group.required.row
+                                    label.col-sm-3.col-form-label(for='inputEmail') E-Mail
+                                    .col-sm-9
+                                        input#inputEmail.form-control(type='email',placeholder='me@example.com', required)
+                                        .invalid-tooltip Bitte geben Sie eine gültige E-Mail-Adresse ein 
+                                .form-group.row
+                                    label.col-sm-3.col-form-label(for='inputPhone') Telefon
+                                    .col-sm-9
+                                        input#inputPhone.form-control(type='tel',placeholder='+49 123 45 678')
+                                .form-group.required.row
+                                    label.col-sm-3.col-form-label(for='inputComment') Kommentar
+                                    .col-sm-9
+                                        textarea#inputComment.form-control(placeholder='Ihr Kommentar',required)
+                                        .invalid-tooltip Bitte geben Sie einen Kommentar ein
+                                .form-group.row
+                                    .col-sm-9.offset-sm-3
+                                        input.float-sm-right.btn.btn-primary(type='submit',value='Abschicken')
+                    // Leistungsumpfang
+                    .row
+                        .col-md-12
+                            h2 Leistungsumpfang /
+                            hr
+                    // section list
+                    .row.section
+                        .col-md-4
+                            ol
+                                li.list-item Lorem
+                                li.list-item Ipsum 
+                                li.list-item Dolor 
+                                li.list-item Sit
+                            
+                        .col-md-4
+                            ul.list-unstyled
+                                li Exozet: GmbH
+                                li Mitarbeiter: ca. 150
+                                li Groups: Games Interact, Effects
+                                li Gründung: 1996
+                // sidebar
+                .col-md-3
+                    .row
+                        .col-md-12
+                            h3 Interne Linkliste
+                            hr
+                            ul
+                                li.list-item
+                                    a(href='#') Link Nummer 1
+                                li.list-item
+                                    a(href='#') Link Nummer 2
+                                li.list-item
+                                    a(href='#') Link Nummer 3
+                    .row
+                        .col-md-12
+                            h3 Kontakt
+                            hr
+                            |    Exozet Berlin
+                            address Platz der Luftbrücke 4-6
+                                br
+                            |    12101 Berlin
+                            
+                            tel +49(0)30 24 65 60-0
+                            mail info@exozet.com
+                    .row
+                        .col-md-12
+                            h3 Image Teaser
+                            hr
+                            .card
+                                img(src="/img/image-teaser.png", alt="Es gibt im Moment in diese Mannschaft, oh, einige Spieler")
+                                button.btn.btn-primary Mehr lesen
+            // footer
+            .row
+                .col-md-9 &copy; Exozet 2014
+                .col-md-3
+                    nav.navbar.navbar-light
+                        a(href="#") News
+                        | |
+                        a(href="#") Kontakt
+                        | |
+                        a(href="#") Impressum
                 
