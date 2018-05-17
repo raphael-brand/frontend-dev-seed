@@ -1,6 +1,7 @@
 @import '../../node_modules/bootstrap-xxl/scss/mixins'
 @import '../../node_modules/bootstrap-xxl/scss/bootstrap'
 @import 'fonts'
+@import 'glyphicons'
 
 $spacer: 20px;
 $asterisk-color: $form-feedback-invalid-color;
@@ -87,3 +88,26 @@ tel, mail
     border-bottom: 2px solid #ddd;
   & > .row:nth-child(3)
     border-top: 2px solid #ddd;
+
+address
+  display: block;
+  clear: both;
+.contact
+  
+  display: block;
+  position: relative;
+  clear: both;
+  
+  .sprite.telephone
+    top: 3px;
+
+  .sprite.mail
+    top: 20px;
+
+  tel, p
+    padding-left: 21px;
+
+tel::before
+  content: "Tel.: ";
+.contact > p::before
+  content: "E-Mail: "
