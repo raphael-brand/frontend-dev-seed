@@ -12,7 +12,7 @@ $link-color: #739324;
     background-color: lighten(black, 90%);
 
 p, .text-body div, .section li,
-.section address, .section tel, .section p
+.section address, .section tel, .section p, span
 
     line-height: 1.45em;
     font-size: .8em;
@@ -44,3 +44,9 @@ blockquote
 blockquote
     cite::before
         content: "\2014 \2009";
+// footer links
+.row#footer
+    *
+        color: $link-color;
+    span
+        color: $font-color;
