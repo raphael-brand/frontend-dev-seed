@@ -63,6 +63,7 @@ gulp.task('sass', function () {
   return gulp.src([
     './app/sass/*.sass'])
     .pipe(sass()).on('error', sass.logError)
+    .pipe($.minifyCss())
     .pipe(gulp.dest('./dist/css'));
 });
 
