@@ -1,3 +1,7 @@
+
+$font-color: #555;
+$link-color: #739324;
+
 *
     font-family: sans-serif;
     line-height: 1em;
@@ -8,19 +12,22 @@
     background-color: lighten(black, 90%);
 
 p, .text-body div, .section li,
-.section address, .section tel, .section p,
-a
+.section address, .section tel, .section p
+
     line-height: 1.45em;
     font-size: .8em;
     word-wrap: break-word;
-    color: #555;
+    color: $font-color;
+
+    a
+        color: $link-color;
     
 blockquote p, cite
     
     font-family: 'Merriweather', serif;
     font-size: 1.25em
     font-style: normal;
-    color: #555;
+    color: $font-color;
 
 h1, h2, h3
     font-family: 'Titillium Web', sans-serif;
@@ -37,4 +44,3 @@ blockquote
 blockquote
     cite::before
         content: "\2014 \2009";
-
