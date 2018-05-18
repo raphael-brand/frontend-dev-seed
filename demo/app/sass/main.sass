@@ -80,6 +80,13 @@ p.form-error-text
     content: "\2009 \002a";
     color: $asterisk-color;
 
+form input[type="submit"]
+  @include media-breakpoint-down(md, $grid-breakpoints)
+    width: auto;
+  @include media-breakpoint-down(sm, $grid-breakpoints)
+    width: 100%;
+
+
 .link-list
   
   list-style-type: none;
