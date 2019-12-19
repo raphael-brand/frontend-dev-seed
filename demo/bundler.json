@@ -3,6 +3,7 @@
     "scripts": [
         "test-module.js",
         "animation.js",
+        "canvas-app.js",
         "main.js"
     ]
 }

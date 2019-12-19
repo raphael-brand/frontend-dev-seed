@@ -1,8 +1,3 @@
-define('test-module', function() {
-  return {
-    test: () => {return 'this is a test'}
-  }
-});
 define('animation', function(test) {
   var createAnimatedText = function(querySelector, staggerInterval) {
     var target = document.querySelector(querySelector);
@@ -28,9 +23,15 @@ define('animation', function(test) {
     animateText: createAnimatedText
   }
 });
+define('canvas-app', function() {
+  return 'Message from Module Canvas App';
+});
+
 const log = console.log;
 
 log('Hello Bootstrap');
-require(['animation'], function(console) {
+require(['animation','canvas-app'], function(console, canvasApp) {
+  document.querySelector('.animation').textContent = canvasApp;
   log(console.animateText('.animation', 150));
+
 });
