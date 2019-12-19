@@ -8,5 +8,5 @@ function createRequireModule() {
     targetfile="`pwd`/$path$repl.js";
     echo ${filecontent/testmod/$repl} > $targetfile;
     code $targetfile;
-    echo "Please add created file $repl.js to gulp 'js' Task, to provide it for the distributed code"
+    echo "Please add created file $repl.js to bundler.json, to provide it for the distributed code"
 }

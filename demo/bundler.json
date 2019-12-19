@@ -1,0 +1,8 @@
+{
+    "path": "app/js",
+    "scripts": [
+        "test-module.js",
+        "animation.js",
+        "main.js"
+    ]
+}

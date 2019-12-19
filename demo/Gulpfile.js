@@ -69,11 +69,13 @@ gulp.task('js-vendor', function () {
 });
 
 gulp.task('js', function () {
-  return gulp.src([
-    'app/js/test-module.js',
-    'app/js/animation.js',
-    'app/js/main.js']
-  )
+
+  let JSBundle = require('./bundler.json');
+  if(JSBundle.scripts.length == 0)
+    return console.error('    ERROR: no scripts added.')
+  let str = JSBundle.scripts.join(','+JSBundle.path+'/');
+  
+  return gulp.src((JSBundle.path+str).split(','))
     .pipe(concat('main.js'))
     .pipe(gulp.dest('./dist/js'))
     .pipe(reload({ stream: true }))
