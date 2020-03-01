@@ -19,11 +19,7 @@
 
 
 ## A little more about my work:
-
-My latest project you'll find on my [CodePen Profile](https://codepen.io/ioio)
-<p data-height="530" data-theme-id="0" data-slug-hash="JJaVgy" data-default-tab="result" data-user="ioio" data-embed-version="2" data-pen-title="Canvas - Pacman-alike-playfield (work-in-progress)" class="codepen">See the Pen <a href="https://codepen.io/ioio/pen/JJaVgy/">Canvas - Pacman-alike-playfield (work-in-progress)</a> by Raphael (<a href="https://codepen.io/ioio">@ioio</a>) on <a href="https://codepen.io">CodePen</a>.</p>
-
-<script async onload="if(/github\.io/gi.test(window.location.host)) this.style.display='block'; else this.style.display='none';" src="https://production-assets.codepen.io/assets/embed/ei.js"></script>
-
+- Check out my [CodePen Profile](https://codepen.io/ioio)
 ## At last
-The link to my [GitHub Profile](https://git.io/vHPJ9)
+- The link to my [GitHub Profile](https://git.io/vHPJ9)
+or write me an email :relaxed:
