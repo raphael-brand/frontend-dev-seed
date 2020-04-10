@@ -1,7 +1,7 @@
 # Frontend development
 
 ## A little more about my work:
-- I am busy with learning React.js: [A math game (work in progress)](https://5e5681a4df5256000a36f815--rb-math-game.netlify.com) [[repo](https://github.com/raphael-brand/react-game)], where I am currently refactoring the app ...
+- I am busy with learning React.js: [A math game (work in progress)](https://rb-math-game.netlify.com) [[repo](https://github.com/raphael-brand/react-game)], where I am currently refactoring the app ...
 - Check out my [CodePen Profile](https://codepen.io/ioio)
 ## At last
 - The link to my [GitHub Profile](https://git.io/vHPJ9)
