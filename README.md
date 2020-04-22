@@ -1,9 +1,9 @@
 # Frontend development
 
 ## A little more about my work:
-- I am busy with learning React.js while creating my first mobile app:
+- I am busy with learning React.js while creating my [first mobile app](https://github.com/raphael-brand/react-game):
 <iframe src='https://rb-math-game.netlify.app' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' width='600px' height='770px'></iframe>
-[[repo](https://github.com/raphael-brand/react-game)]
+
 - Check out my [CodePen Profile](https://codepen.io/ioio)
 ## At last
 - The link to my [GitHub Profile](https://git.io/vHPJ9)
