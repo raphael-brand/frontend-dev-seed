@@ -8,5 +8,4 @@
 ## At last
 - The link to my [GitHub Profile](https://git.io/vHPJ9)
 or write me an email :relaxed:
-and if you should've tried to call - here you can see if I am busy with coding:
-<iframe src='https://codealike.com/Profile/FactsWidget/shptrs' frameborder='0' scrolling='no' marginheight='0' marginwidth='0' width='600px' height='370px'></iframe>
+and if you should've tried to call - here you can see if I am busy with coding you used to see Codealike statistics, but Codealike died. I switch to a different tracking tool.
